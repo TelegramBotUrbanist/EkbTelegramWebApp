@@ -1,0 +1,35 @@
+// SearchBar.scss
+@import "src/styles/helpers";
+.search-bar {
+  &--container{
+    @include indexPadding
+  }
+  &--img{
+    position: relative;
+    bottom: -3px;
+  }
+  background-color: #F7F8FC;
+  border-radius: 12px;
+  padding: 5px 15px;
+  //text-align: center;
+  //vertical-align: center;
+  //height: 37px;
+
+  input {
+    border: none;
+    background: transparent;
+    outline: none;
+    color: $n6;
+    @include body1-r;
+
+
+    &::placeholder {
+      color: $n6;
+    }
+  }
+
+  svg {
+    margin-right: 10px; /* Отступ между иконкой и текстом */
+    fill: $n6;
+  }
+}

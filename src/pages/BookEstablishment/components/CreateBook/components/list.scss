@@ -1,0 +1,22 @@
+.booking-list{
+  padding: 12px 16px;
+  color:#000000;
+  .booking-value{
+    &:not(&:last-of-type){
+      margin-bottom: 4px;
+    }
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.23000000417232513px;
+    text-align: left;
+
+    .range{
+      color: #000000;
+    }
+    .duration,.book{
+      color: #3C3C4399;
+    }
+  }
+
+}

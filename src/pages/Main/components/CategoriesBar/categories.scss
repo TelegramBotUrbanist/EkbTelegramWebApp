@@ -1,0 +1,42 @@
+@import "src/styles/helpers";
+
+// Добавляем контейнер
+.navigate-bar-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+// Сохраняем существующие стили для navigate-bar и добавляем необходимые для свайпа
+.navigate-bar-content {
+  display: flex;
+  flex-direction: row; // Явно указываем направление
+  flex-wrap: nowrap; // Запрещаем перенос
+  gap: 4px;
+  @include indexPadding;
+  cursor: grab;
+  touch-action: pan-x;
+  position: relative;
+  min-width: min-content; // Позволяет контенту растягивать
+}
+
+.navigate-button {
+  background-color: #7676801F;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 14px;
+  color: $n8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: background-color 0.3s;
+  user-select: none; // Предотвращаем выделение текста при свайпе
+  @include body1-m;
+
+  &.active {
+    background-color: $n8;
+    color: $n;
+  }
+}

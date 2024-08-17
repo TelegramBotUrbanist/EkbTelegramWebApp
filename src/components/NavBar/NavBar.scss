@@ -1,0 +1,38 @@
+.bottomNavBar {
+  position: fixed;
+  bottom: 34px; /* Отступ снизу */
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #f8f8f8; /* Цвет фона */
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  .homeIcon{
+    height: 23px;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #888; /* Цвет текста по умолчанию */
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    span {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+
+  }
+
+}
