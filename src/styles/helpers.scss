@@ -1,0 +1,234 @@
+@mixin xl {
+  @media only screen and (max-width: 1920px) {
+    @content;
+  }
+}
+
+@mixin w {
+  @media only screen and (max-width: 1419px) {
+    @content;
+  }
+}
+
+@mixin x {
+  @media only screen and (max-width: 1339px) {
+    @content;
+  }
+}
+
+@mixin d {
+  @media only screen and (max-width: 1259px) {
+    @content;
+  }
+}
+
+@mixin t {
+  @media only screen and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin m {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin a {
+  @media only screen and (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin s {
+  @media only screen and (max-width: 474px) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @media only screen and (max-width: 375px) {
+    @content;
+  }
+}
+
+@mixin SFPro {
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+$p1: #2A85FF;
+$p2: #83BF6E;
+$p3: #FF6A55;
+$p4: #8E59FF;
+$s1: #FFBC99;
+$s2: #CABDFF;
+$s3: #ebf3fe;
+$s4: #B5E4CA;
+$s5: #FFD88D;
+$s6: #C31212;
+$ph1: #E13F29;
+
+$n: #FFFFFF;
+$n1: #FCFCFC;
+$n2: #F4F4F4;
+$n3: #EFEFEF;
+$n4: #6F767E;
+$n5: #33383F;
+$n6: #272B30;
+$n7: #1A1D1F;
+$n8: #000000;
+
+$shades1: #9A9FA5;
+$shades2: #6F767E;
+$shades3: rgba(#6F767E, 0.4);
+$shades4: rgba(#111315, 0.5);
+
+
+@mixin title1-s {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: -0.02em;
+
+  @include m {
+    font-size: 18px;
+  }
+}
+
+@mixin title1-m {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: -0.02em;
+
+  @include m {
+    font-size: 18px;
+  }
+}
+
+@mixin title2 {
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+}
+
+@mixin base1-s {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+@mixin base1-b {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+@mixin base2 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.71;
+}
+
+@mixin body1-m {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: -0.015em;
+}
+
+@mixin body1-s {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: -0.015em;
+}
+
+@mixin body1-r {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.015em;
+}
+
+@mixin body2-s {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.71;
+}
+
+@mixin caption1 {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.23;
+}
+
+@mixin caption1-m {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.23;
+}
+
+@mixin caption2 {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+@mixin caption2-m {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+@mixin button1 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+@mixin button2 {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.85;
+}
+
+
+@mixin placeholder {
+  &::placeholder {
+    @content;
+  }
+}
+
+
+@mixin r($width) {
+  @media only screen and (max-width: $width + "px") {
+    @content;
+  }
+}
+
+@mixin rmin($width) {
+  @media only screen and (min-width: $width + "px") {
+    @content;
+  }
+}
+
+
+@mixin dark {
+  @at-root .dark-mode & {
+    @content;
+  }
+}
+
+@mixin dark-body {
+  @at-root .dark-mode {
+    @content;
+  }
+}
+
+@mixin dark-common {
+  @at-root .dark-mode & {
+    @content;
+  }
+}
+
