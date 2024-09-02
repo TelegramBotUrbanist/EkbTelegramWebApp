@@ -15,9 +15,9 @@
   width: 100vw;
   height: 292px;
   object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
+  //position: absolute;
+  //top: 0;
+  //left: 0;
 }
 
 .progress-indicator {
@@ -26,6 +26,7 @@
   position: absolute;
   bottom: 10px;
   width: 90%;
+  z-index: 10;
   //padding: 0 10%;
   padding-left: 20px;
   padding-right: 20px;
@@ -35,6 +36,7 @@
   flex: 1;
   height: 2px;
   margin: 0 2px;
+  z-index: 11;
   background-color: #ccc;
   border-radius: 2px;
   overflow: hidden;

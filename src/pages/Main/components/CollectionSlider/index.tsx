@@ -7,9 +7,7 @@ import { collectionsAtom } from './slider.atoms.ts';
 const CollectionSlider: React.FC = () => {
   const collections = useAtomValue(collectionsAtom);
 
-  if (!collections || collections.length === 0) {
-    return <div>Loading...</div>;
-  }
+
 
   return (
     <div className="collection-slider">
