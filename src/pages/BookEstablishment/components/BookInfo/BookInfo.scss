@@ -1,0 +1,11 @@
+@import "src/styles/helpers";
+.header{
+  border-bottom: none;
+  padding: 20px 16px 12px 16px;
+}
+.book_contacts{
+  &__inputs{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

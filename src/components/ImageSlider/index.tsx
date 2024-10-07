@@ -1,15 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useAtom } from 'jotai';
-import { imagesAtom, currentIndexAtom } from './slider.atoms.ts';
-import Slider from "react-slick"
+import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './ImageSlider.scss';
+import React, { useEffect, useRef } from 'react';
+import { useAtom } from 'jotai';
+import { currentIndexAtom } from './slider.atoms.ts';
+import Rating from '../../shared/Rating';
+import LikeButton from '../../shared/LikeButton';
+
+
 
 const SlideIntervalConst = 7000;
 
-const ImageSlider: React.FC = () => {
-  const [images] = useAtom(imagesAtom);
+const ImageSlider: React.FC<{ images: string[],rating?:number,canLike?:boolean }> = ({ images, rating,canLike }) => {
+  debugger
   const [currentIndex, setCurrentIndex] = useAtom(currentIndexAtom);
   const intervalRef = useRef<NodeJS.Timeout | string | number | undefined>(undefined);
 
@@ -27,13 +31,15 @@ const ImageSlider: React.FC = () => {
 
   useEffect(() => {
     startSlideShow();
-    return () => stopSlideShow();
+    return () => {
+      stopSlideShow();
+      setCurrentIndex(0);  // Reset the currentIndex when component unmounts
+    };
   }, [images.length]);
 
   const sliderRef = useRef<Slider | null>(null);
 
   const settings = {
-    // dots: true,
     infinite: true,
     speed: SlideIntervalConst / 10,
     slidesToShow: 1,
@@ -43,28 +49,34 @@ const ImageSlider: React.FC = () => {
     draggable: true,
     beforeChange: (oldIndex: number, newIndex: number) => {
       setCurrentIndex(newIndex);
-      stopSlideShow(); // Останавливаем слайдшоу при ручном перелистывании
+      stopSlideShow();
     },
     afterChange: () => {
-      startSlideShow(); // Перезапускаем слайдшоу после завершения перелистывания
+      startSlideShow();
     },
   };
-
-  if (!images || images.length === 0) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="image-slider">
       <Slider ref={sliderRef} {...settings}>
         {images.map((src, index) => (
           <div key={index} className="slider-image-wrapper">
+            {rating && (
+              <div className="rating-container">
+                <Rating rating={rating} />
+              </div>
+            )}
             <img src={src} alt={`Image ${index + 1}`} className="slider-image" />
+            {canLike && (
+              <div className="like-container">
+                <LikeButton/>
+              </div>
+            )}
           </div>
         ))}
       </Slider>
       <div className="progress-indicator">
-        {images.map((_, index) => (
+        {images.length > 1 && images.map((_, index) => (
           <div key={index} className="progress-segment">
             <div
               className={`progress-bar ${currentIndex === index ? 'active' : ''}`}

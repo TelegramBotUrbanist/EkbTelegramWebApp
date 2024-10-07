@@ -1,4 +1,4 @@
-import ImageSlider from './components/ImageSlider';
+import ImageSlider from '../../components/ImageSlider';
 import { List, Section } from '@telegram-apps/telegram-ui';
 import React, { Suspense, useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
@@ -10,16 +10,24 @@ import CategorySection from './components/CategorySection';
 import Loader from '../../shared/Loader';
 import { useAtom } from 'jotai';
 import { searchValueAtom } from '../../components/SearchBar/search.atom.ts';
+import { establishmentsAtom } from './components/CategorySection/categorySection.atoms.ts';
+import {
+  categoriesAtom,
+  selectedCategoryAtom,
+  selectedSubcategoriesAtom,
+} from './components/CategoriesBar/categroies.atoms.ts';
+import { collectionsAtom } from './components/CollectionSlider/slider.atoms.ts';
+import { imagesAtom } from './slider.atoms.ts';
 
 const MainPage = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Имитация загрузки данных
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
+  const [loading, setLoading] = useState(false);
+  const [images] = useAtom(imagesAtom)
+  // useEffect(() => {
+  //   // Имитация загрузки данных
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 2000);
+  // }, []);
 
   const [searchValue, setSearchValue] = useAtom(searchValueAtom);
 
@@ -39,16 +47,21 @@ const MainPage = () => {
         </div>
       ) : (
         <>
-          <ImageSlider />
+          <ImageSlider images={images} />
 
           <List className={'main__page'}>
-            <CollectionSlider />
+            <CollectionSlider collectionsAtom={collectionsAtom} />
             <SearchBar value={searchValue} onChange={handleSearchChange} />
 
-            <CategoriesBar/>
+            <CategoriesBar atom={categoriesAtom} selectedCategoryAtom={selectedCategoryAtom} selectedInnerCategoryAtom={selectedSubcategoriesAtom}/>
 
 
-            <CategorySection/>
+            <CategorySection
+              dataAtom={establishmentsAtom}
+              categoriesAtom={categoriesAtom}
+              selectedCategoryAtom={selectedCategoryAtom}
+              type="establishments"
+            />
           </List>
         </>
       )}

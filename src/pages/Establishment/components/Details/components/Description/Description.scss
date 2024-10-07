@@ -1,0 +1,53 @@
+@import "src/styles/helpers";
+
+.establishment-main .description {
+  color: $n8;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  position: relative;
+  max-height: 80px; // Ограничиваем высоту для обрезки текста
+  overflow: hidden;
+  //padding-right: 60px; // Оставляем место справа для кнопки
+
+  &.expanded {
+    max-height: none; // Убираем ограничение по высоте при раскрытии
+  }
+
+  // Градиент для затухания текста
+
+
+  &.expanded::after {
+    display: none; // Убираем градиент, когда текст раскрыт
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: -14px; // Градиент будет появляться слева от кнопки
+    bottom: 0;
+    width: 24px; // Длина градиента
+    height: 18px;
+
+    //background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)); // Градиент от прозрачного к белому
+    pointer-events: none; // Градиент не блокирует клики
+    transition: all 0.3s ease;
+  }
+
+  .show-more {
+    color: $p1;
+    cursor: pointer;
+    font-weight: 500;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 50px;
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0.7) 20%, rgba(255, 255, 255, 1) 10%); // Градиент от прозрачного к белому
+    padding-left: 10px; // Отступ для удобства клика
+    transition: color 0.3s ease;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+  }
+}

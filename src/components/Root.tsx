@@ -2,6 +2,7 @@ import { SDKProvider, useLaunchParams } from '@telegram-apps/sdk-react';
 import { type FC, useEffect, useMemo } from 'react';
 import App from '../App.tsx';
 import { ErrorBoundary } from './ErrorBoundary';
+import { SnackbarProvider } from 'notistack';
 
 const ErrorBoundaryError: FC<{ error: unknown }> = ({ error }) => (
   <div>
@@ -26,7 +27,9 @@ const Inner: FC = () => {
 
   return (
     <SDKProvider acceptCustomStyles debug={debug}>
+      <SnackbarProvider>
       <App />
+      </SnackbarProvider>
     </SDKProvider>
   );
 };

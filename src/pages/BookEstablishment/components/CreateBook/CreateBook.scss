@@ -1,0 +1,27 @@
+@import "src/styles/helpers";
+
+.book_info{
+
+  .header{
+    border-bottom: none;
+    padding: 20px 16px 12px 16px;
+  }
+  &__image-container{
+    padding: 0 16px;
+    .image-slider{
+      width: unset;
+      border-radius: 20px;
+    }
+  }
+  &__description{
+    @include indexPadding;
+    padding-top: 12px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #000000;
+    margin: unset;
+
+  }
+}

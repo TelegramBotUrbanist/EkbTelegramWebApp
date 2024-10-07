@@ -1,16 +1,17 @@
 import React, { startTransition } from 'react';
 import { motion } from 'framer-motion';
 import './SubCategories.scss';
-import { Category, selectedSubcategoriesAtom, selectedSubcategoryAtom } from '../../categroies.atoms.ts';
-import { useAtom } from 'jotai';
+import { Category, selectedSubcategoriesAtom } from '../../categroies.atoms.ts';
+import { Atom, useAtom } from 'jotai';
 
 interface SubcategoriesBarProps {
   subcategories: Omit<Category, "innerCategoriesTitle">[];
+  selectedInnerCategoryAtom:Atom<any>
 }
 
-const SubcategoriesBar: React.FC<SubcategoriesBarProps> = ({ subcategories }) => {
+const SubcategoriesBar: React.FC<SubcategoriesBarProps> = ({ subcategories,selectedInnerCategoryAtom }) => {
 
-  const [selectedSubcategories, setSelectedSubcategories] = useAtom(selectedSubcategoriesAtom);
+  const [selectedSubcategories, setSelectedSubcategories] = useAtom(selectedInnerCategoryAtom);
 
   const handleSelectSubcategory = (id: number) => {
     startTransition(() => {

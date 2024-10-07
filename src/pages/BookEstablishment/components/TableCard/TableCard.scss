@@ -1,0 +1,96 @@
+@import "src/styles/helpers";
+
+.table-card {
+  .image-container {
+    position: relative;
+    width: 164px;
+    height: 174px;
+    border-radius: 20px;
+    overflow: hidden;
+
+
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .statuses {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: absolute;
+      top: 8px;
+      left: 4px;
+      //background: $n1; /* Светлый фон */
+       /* Темный текст */
+
+      .period{
+        background-color: $n1;
+        color: $n8;
+        border-radius: 12px;
+        padding: 0px 8px;
+        font-size: 13px;
+        line-height: 18px;
+        white-space: nowrap;
+      }
+
+      &.occupied {
+        background: #FF0000; /* Красный фон для занятых столов */
+        color: #FFFFFF; /* Белый текст для занятых */
+      }
+    }
+  }
+
+  .details {
+    margin-left: 2px;
+    margin-top: 4px;
+    .block{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      color: $n8;
+      .capacity{
+        span{
+          margin-left:4px;
+        }
+      }
+    }
+
+    .location {
+      font-size: 12px;
+      color: #3c3c43;
+      line-height: 16px;
+      opacity: 0.6;
+    }
+
+    .name {
+      margin-top: 2px;
+      font-size: 17px;
+      color: #000000;
+      line-height: 22px;
+      font-weight: 400;
+    }
+
+    .capacity {
+      display: flex;
+      align-items: center;
+      margin-top: 4px;
+
+      .guest-icon {
+        width: 16px;
+        height: 16px;
+        //background-image: url('/path-to-your-guest-icon.svg'); /* Заменить на реальный путь */
+        background-size: cover;
+        margin-right: 4px;
+      }
+
+      .guest-count {
+        font-size: 14px;
+        color: #000;
+      }
+    }
+  }
+}

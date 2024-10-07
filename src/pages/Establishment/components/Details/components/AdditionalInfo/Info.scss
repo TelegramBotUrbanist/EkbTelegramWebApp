@@ -1,0 +1,20 @@
+@import "src/styles/helpers";
+.establishment-details .additional-info {
+  color: $n8;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  margin-top: 14px;
+  p{
+    color: $n6;
+    margin: 6px 0px;
+    span{
+      color: $n8
+    }
+    a{
+      color: $n8;
+      text-decoration: none;
+
+    }
+  }
+}

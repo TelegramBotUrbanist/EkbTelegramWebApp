@@ -1,0 +1,34 @@
+@import "src/styles/helpers";
+.establishment-page{
+  &__mainInfo{
+    color: $n8;
+    &_title{
+    @include title1-m;
+    padding: 4px 0px;
+    }
+    &_address{
+      color: $n6;
+      padding: 4px 0px;
+
+      @include caption2-s
+    }
+    &_categories{
+      display: inline-flex;
+      align-items: center;
+      &_category{
+        color:$n6 ;
+        @include caption2-s
+      }
+      &_category::after{
+        content: "•";
+        display: inline-flex;
+        margin: 0 4px;
+        color:$n6 ;
+      }
+      .last::after{
+        content: none;
+        display: none;
+      }
+    }
+  }
+}

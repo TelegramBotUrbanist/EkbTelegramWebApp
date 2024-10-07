@@ -2,6 +2,8 @@ import React from 'react';
 import './EstablishmentCard.scss';
 import { FoodEstablishmentInfoDto } from '../../categorySection.types.ts';
 import classNames from 'classnames';
+import Rating from '../../../../../../shared/Rating';
+import LikeButton from '../../../../../../shared/LikeButton';
 
 interface EstablishmentCardProps {
   establishment: FoodEstablishmentInfoDto;
@@ -18,15 +20,11 @@ const EstablishmentCard: React.FC<EstablishmentCardProps> = ({isDetailed, establ
           className={"establishment-image"}
           onDragStart={(e) => e.preventDefault()}
         />
-        <div className="rating">
-          <span>{establishment.serialNumber}</span>
-        </div>
+      <Rating rating={establishment.serialNumber}/>
         {establishment.promotionExist && (
           <div className="promotion">Розыгрыш</div>
         )}
-        <div className="like-button">
-          <img src="/heart.svg" alt="Like" />
-        </div>
+        <LikeButton/>
       </div>
       <div className="details">
         <span className="category">

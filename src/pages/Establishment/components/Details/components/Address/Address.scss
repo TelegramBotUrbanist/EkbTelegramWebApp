@@ -1,0 +1,7 @@
+@import "src/styles/helpers";
+.establishment-details .address{
+  @include title1-m;
+  font-weight: 400;
+  color: $n8;
+  padding-bottom: 4px;
+}

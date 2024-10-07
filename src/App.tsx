@@ -25,6 +25,16 @@ import {
 } from '@telegram-apps/sdk-react';
 import { AppRoot } from '@telegram-apps/telegram-ui';
 import Loader from './shared/Loader';
+import EstablishmentPage from './pages/Establishment';
+import { LoadingProvider } from './providers/LoadingProvider.tsx';
+import CreateBook from './pages/BookEstablishment/components/CreateBook/CreateBook.tsx';
+import BookEstablishment from './pages/BookEstablishment';
+import TableInfo from './components/TableInfo';
+import BookInfo from './pages/BookEstablishment/components/BookInfo';
+import NavBarLayout from './layouts/NavBarLayout';
+import EventsPage from './pages/Events';
+import EstablishmentLayout from './layouts/EstablishmentLayout';
+import EventPage from './pages/Events/components/EventPage';
 
 function App() {
   const lp = useLaunchParams();
@@ -50,17 +60,51 @@ function App() {
     return () => navigator.detach();
   }, [navigator]);
   return (
+    <Suspense fallback={<></>}>
+
     <AppRoot
       appearance={miniApp?.isDark ? 'dark' : 'light'}
       platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}
     >
+      <LoadingProvider>
       <Router location={location} navigator={reactNavigator}>
         <Routes>
-          <Route path={'/'} element={<MainPage />} />
-          <Route path={'*'} element={<Navigate to={'/'} />} />
+          <Route path={'/'} element={<NavBarLayout/>}>
+            <Route index element={<MainPage />} />
+            <Route path={'events'} element={<EventsPage />} />
+            {/*<Route path={'/events'} element={<MapPage />} />*/}
+          </Route>
+          <Route path={'establishment'} element={<EstablishmentLayout/>}>
+            <Route path={`:id`} element={<EstablishmentLayout/>}>
+              <Route index element={<EstablishmentPage/>}/>
+              <Route path={'book'} element={<EstablishmentLayout/>}>
+                <Route index element={<BookEstablishment type={'establishment'}/>}/>
+                <Route path={`info`} element={<BookInfo/>}/>
+
+              </Route>
+              <Route path={'tables/:tableId'} element={<CreateBook/>}/>
+            </Route>
+          </Route>
+          <Route path={'events'} element={<EstablishmentLayout/>}>
+            <Route path={`:id`} element={<EstablishmentLayout/>}>
+              <Route index element={<EventPage/>}/>
+              <Route path={'book'} element={<EstablishmentLayout/>}>
+                <Route index element={<BookEstablishment type={'event'}/>}/>
+                <Route path={`info`} element={<BookInfo/>}/>
+              </Route>
+              <Route path={'tables/:tableId'} element={<CreateBook/>}/>
+            </Route>
+          </Route>
+
+
+
+          {/*<Route path={'*'} element={<Navigate to={'/'} />} />*/}
         </Routes>
       </Router>
+      </LoadingProvider>
     </AppRoot>
+    </Suspense>
+
   );
 }
 

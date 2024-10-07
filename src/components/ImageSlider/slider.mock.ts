@@ -1,4 +1,4 @@
-import { mockHttp } from '../../../../shared/http.ts';
+import { mockHttp } from '../../shared/http.ts';
 
 const mockImages = [
   'https://img.freepik.com/free-photo/the-adorable-illustration-of-kittens-playing-in-the-forest-generative-ai_260559-483.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1723680000&semt=ais_hybrid',
@@ -11,4 +11,5 @@ const mockImages = [
   // 'https://avatars.mds.yandex.net/get-mpic/1859063/img_id8310638138210677240.jpeg/orig',
 ];
 
-mockHttp.onGet('/api/slider/images').reply(200, mockImages);
+mockHttp.onGet('/food/establishments/slider/content').reply(200, mockImages);
+mockHttp.onGet('/events/slider/content').reply(200, mockImages);

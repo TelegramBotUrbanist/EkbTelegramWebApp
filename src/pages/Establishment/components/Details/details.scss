@@ -1,0 +1,27 @@
+@import "src/styles/helpers";
+.establishment-main{
+  padding: 20px 16px 8px 16px;
+  &>div{
+    margin-bottom: 16px;
+  }
+}
+.establishment-details{
+  margin-bottom: 62px;
+  &__promo{
+    //padding:20px 0px;
+   display: grid;
+  }
+
+}
+.buttonContainer{
+  a {
+    display: inherit;
+  }
+  display: grid;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  @include indexPadding;
+  width: -webkit-fill-available;
+  left: 0;
+}

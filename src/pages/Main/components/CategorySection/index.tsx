@@ -1,38 +1,41 @@
-import React, { startTransition, useEffect, useMemo, useRef } from 'react';
+import React, { startTransition, useMemo } from 'react';
 import { useAtom, useAtomValue } from 'jotai';
 import './CategorySection.scss';
-import { establishmentsAtom } from './categorySection.atoms.ts';
-import { FoodEstablishmentInfoDto, EstablishmentMapResponse, EstablishmentListResponse } from './categorySection.types.ts';
 import CategoryHeader from './components/CategoryHeader';
 import EstablishmentList from './components/EstablishmentList';
-import { categoriesAtom, selectedCategoryAtom } from '../CategoriesBar/categroies.atoms.ts';
 import Loader from '../../../../shared/Loader';
 
-const CategorySection: React.FC = () => {
-  const establishments = useAtomValue(establishmentsAtom);
+interface CategorySectionProps {
+  dataAtom: any;  // Атом для заведений или мероприятий
+  categoriesAtom: any; // Атом для категорий
+  selectedCategoryAtom: any;  // Атом для выбранной категории
+  type: 'establishments' | 'events';  // Тип данных
+}
+
+const CategorySection: React.FC<CategorySectionProps> = ({ dataAtom, categoriesAtom, selectedCategoryAtom, type }) => {
+  debugger
+  const data = useAtomValue(dataAtom);  // Используем атом для заведений или мероприятий
   const [selectedCategory, setSelectedCategory] = useAtom(selectedCategoryAtom);
   const [categories] = useAtom(categoriesAtom);
 
   const groupedByCategory = useMemo(() => {
-    if (!establishments?.data) return {};
+    if (!data?.data) return {};
 
-    if (Array.isArray(establishments.data)) {
+    if (Array.isArray(data.data)) {
       // Группировка массива по категориям
-      return establishments.data.reduce((acc, establishment) => {
-        const categoryId = establishment.categoryForEstablishmentInfoDto.id;
+      return data.data.reduce((acc, item) => {
+        const categoryId = item.categoryForEstablishmentInfoDto.id;
         if (!acc[categoryId]) {
           acc[categoryId] = [];
         }
-        acc[categoryId].push(establishment);
+        acc[categoryId].push(item);
         return acc;
-      }, {} as EstablishmentMapResponse);
+      }, {} as Record<number, any[]>);
     }
 
-    // Если `establishments` — это объект (мапа), возвращаем как есть
-    return establishments.data as EstablishmentMapResponse;
-  }, [establishments]);
-
-
+    // Если данные — это объект (мапа), возвращаем как есть
+    return data.data;
+  }, [data]);
 
   const handleCategorySelect = (id: number) => {
     startTransition(() => {
@@ -40,39 +43,32 @@ const CategorySection: React.FC = () => {
     });
   };
 
-
-
-
-  if(categories.state==='loading' || establishments.state==='loading') return <Loader/>
-
-
+  if (categories.state === 'loading' || data.state === 'loading') return <Loader />;
 
   const renderCategorySection = () => {
     if (selectedCategory) {
-      // Фильтрация по выбранной категории
-      const filteredEstablishments = groupedByCategory[selectedCategory] || [];
+      const filteredItems = groupedByCategory[selectedCategory] || [];
       return (
         <div className="detailed-view">
-          <EstablishmentList isDetailed direction={'y'} establishments={filteredEstablishments} />
+          <EstablishmentList type={type} isDetailed direction={'y'} establishments={filteredItems} />
         </div>
       );
     }
 
     // Отображение всех категорий
-    return Object.entries(groupedByCategory).map(([categoryId, estbs]) => {
-      const category = categories.data.find((cat) => cat.id === Number(categoryId));
+    return Object.entries(groupedByCategory).map(([categoryId, items]) => {
+      const category = categories.data.find((cat: any) => cat.id === Number(categoryId));
       return (
         <div key={categoryId} className="category-section">
           <CategoryHeader
             title={category?.title || ''}
             onSelect={() => handleCategorySelect(Number(categoryId))}
           />
-          <EstablishmentList direction={'x'} establishments={estbs} />
+          <EstablishmentList type={type} direction={'x'} establishments={items} />
         </div>
       );
     });
   };
-
 
   return (
     <div className="category-sections">

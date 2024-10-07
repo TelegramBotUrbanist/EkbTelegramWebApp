@@ -1,0 +1,27 @@
+@import "src/styles/helpers";
+.book_establishment{
+  //padding: 16px;
+  &__inputs{
+    &--header{
+      color: $n8;
+      @include body1-r;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    @include indexPadding;
+    .input-container{
+      margin-bottom: 12px;
+    }
+  }
+  .header{
+    border-bottom: none;
+    padding: 0 16px;
+  }
+}
+.tables{
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+}

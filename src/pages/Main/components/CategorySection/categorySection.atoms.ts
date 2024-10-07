@@ -28,7 +28,6 @@ export const establishmentsAtom = loadable(atom<Promise<EstablishmentMapResponse
   }
 
   const response = await http.get<EstablishmentMapResponse | EstablishmentListResponse>(url, { params });
-  debugger
 
   return response.data;
 }));

@@ -1,13 +1,18 @@
 import React, { startTransition, useMemo } from 'react';
-import { useAtom, useAtomValue } from 'jotai';
+import { Atom, useAtom, useAtomValue } from 'jotai';
 import { motion } from 'framer-motion';
 import './categories.scss';
 import { categoriesAtom, Category, selectedCategoryAtom } from './categroies.atoms.ts';
 import SubcategoriesBar from './components/SubCategoriesBar';
 import Loader from '../../../../shared/Loader';
+interface IProps{
+  atom:Atom<any>,
+  selectedCategoryAtom:Atom<any>
+  selectedInnerCategoryAtom:Atom<any>
+}
 
-const CategoriesBar: React.FC = () => {
-  const categories = useAtomValue(categoriesAtom)
+const CategoriesBar: React.FC<IProps> = ({atom,selectedCategoryAtom,selectedInnerCategoryAtom}) => {
+  const categories = useAtomValue(atom)
   const [selectedCategory, setSelectedCategory] = useAtom(selectedCategoryAtom);
   if(categories.state==='loading') return <Loader/>
 
@@ -43,7 +48,7 @@ const CategoriesBar: React.FC = () => {
 
     </motion.div>
       {selectedCategoryData?.innerCategories && (
-        <SubcategoriesBar subcategories={selectedCategoryData.innerCategories} />
+        <SubcategoriesBar selectedInnerCategoryAtom={selectedInnerCategoryAtom}  subcategories={selectedCategoryData.innerCategories} />
       )}
     </>
   );
