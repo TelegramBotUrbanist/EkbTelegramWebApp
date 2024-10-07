@@ -79,7 +79,7 @@ export const eventCollectionsAtom = atomWithCache(async (get) => {
 });
 
 export const eventAtom = atom(async () => {
-  const response = await http.get('/events/establishment/get', {
+  const response = await http.get('/events/get', {
     // params: { id: 0 },  // Тут ID можно менять динамически
   });
   debugger

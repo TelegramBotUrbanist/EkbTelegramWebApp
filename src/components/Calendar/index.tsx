@@ -30,9 +30,9 @@ const Calendar: React.FC<CalendarProps> = ({label }) => {
     }
   }, [inputValue]);
 
-  useEffect(() => {
-    return ()=> setCalendarValue(new Date())
-  }, []);
+  // useEffect(() => {
+  //   return ()=> setCalendarValue(new Date())
+  // }, []);
 
   const handleInputChange = (newValue: string | number | Date) => {
     if (typeof newValue === 'string') {

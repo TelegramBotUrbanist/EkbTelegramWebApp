@@ -4,14 +4,10 @@ import {
   EstablishmentListResponse,
   EstablishmentMapResponse,
 } from '../Main/components/CategorySection/categorySection.types.ts';
-import {
-  CostLevelEnum,
-  EstablishmentDetails,
-  ReservationTypeEnum,
-  WeekDay,
-} from '../Establishment/components/Details/details.types.ts';
-import { isToday } from 'date-fns';
-import { EventDetails } from './events.types.ts';
+import { WeekDay } from '../Establishment/components/Details/details.types.ts';
+import { AgeRating, EventDetails } from './events.types.ts';
+import { isToday } from '../../utils/date.ts';
+
 const mockEventCategories: Category[] = [
   {
     id: 1,
@@ -294,9 +290,12 @@ const mockImages = [
 mockHttp.onGet('/events/slider/content').reply(200, mockImages);
 
 
-const mockEvent: any = {
+const mockEvent: EventDetails = {
   id: 1,
-  rating: 4.9,
+  title: 'Концерт группы Coldplay',
+  type: 'WORKING_HOURS',
+  // type: "DATE_TIME",
+  // type: "PERIOD",
   imgs: [
     {
       id: 1,
@@ -314,40 +313,17 @@ const mockEvent: any = {
       url: 'https://img.freepik.com/free-photo/rock-concert-at-night_140725-193.jpg',
     },
   ],
-  categoryForEstablishmentInfoDto: {
+  categoryInfoDto: {
     id: 1,
     title: 'Мероприятие',
-    serialNumber: 1,
   },
   innerCategoryInfo: {
     id: 11,
     title: 'Концерт',
-    serialNumber: 1,
   },
-  title: 'Концерт группы Coldplay',
   locationInfo: 'Москва, Олимпийский стадион, Лужники, ул. Лужники, 24',
-  openingHours: [
-    {
-      weekDay: WeekDay.FRIDAY,
-      from: '2024-05-20T18:00:00.473Z',
-      till: '2024-05-20T22:00:00.473Z',
-      currentDay: true, // Мы вызвали isToday, результат должен быть логическим значением
-    },
-    {
-      weekDay: WeekDay.SATURDAY,
-      from: '2024-05-21T18:00:00.473Z',
-      till: '2024-05-21T22:00:00.473Z',
-      currentDay: false,
-    },
-  ],
   description:
     'Coldplay возвращаются с новым туром в поддержку их последнего альбома "Music of the Spheres". Это будет незабываемый концерт с потрясающими визуальными эффектами и хитами, которые любят миллионы.',
-  promoCode: {
-    title: 'Скидка 5% на билеты',
-    description: 'Используйте этот промокод для получения скидки при покупке билетов на концерт Coldplay.',
-    code: 'COLDPLAY2024',
-    receivedByUser: false,
-  },
   mapLocation: {
     latitude: '55.715763',
     longitude: '37.553944',
@@ -355,16 +331,28 @@ const mockEvent: any = {
       'https://yandex.ru/maps/geo/luzhniki/53166537/?ll=37.553944%2C55.715763&z=12',
     pointTitle: 'Олимпийский стадион Лужники',
   },
-  ageLevel: '0',
-  averageBill: '3500–12000 ₽',
-  hasBreakfasts: false,
-  hasBusinessLunches: false,
-  hasDelivery: false,
-  hasParking: true,
-  hasCatering: false,
-  hasBanquets: false,
   phoneNumbers: ['+7 (495) 123-45-67'],
   webSiteLink: 'https://coldplayconcert2024.com',
+  ageRating: AgeRating.ZERO,
+  // startDate: "2024-10-07",
+  // endDate: "2024-10-07",
+  // dateTime:"2024-10-07T11:52:44.582Z",
+  openingHours: [
+    {
+      weekDay: WeekDay.FRIDAY,
+      from: "2024-05-20T18:00:00.473Z",
+      till: "2024-05-20T22:00:00.473Z",
+      currentDay: isToday(WeekDay.FRIDAY),
+    },
+    {
+      weekDay: WeekDay.SATURDAY,
+      from: "2024-05-21T18:00:00.473Z",
+      till: "2024-05-21T22:00:00.473Z",
+      currentDay: isToday(WeekDay.SATURDAY),
+    },
+  ],
+  inFavorites: false,
 };
 
-mockHttp.onGet('/events/establishment/get').reply(200, mockEvent);
+mockHttp.onGet('/events/get').reply(200, mockEvent);
+

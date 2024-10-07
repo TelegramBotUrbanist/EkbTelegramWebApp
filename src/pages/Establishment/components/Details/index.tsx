@@ -16,7 +16,8 @@ import Modal from '../../../../shared/Modal';
 import PromoCodeModal from '../../../../components/PromoCodeModal';
 import { useAtom } from 'jotai';
 import CustomInput from '../../../../shared/Input';
-import { Link, Outlet, useNavigate } from 'react-router-dom'; // Либо другая библиотека для определения устройства
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { AgeRatingRu } from '../../../Events/events.types.ts'; // Либо другая библиотека для определения устройства
 
 interface IProps{
   data:any
@@ -49,10 +50,14 @@ const EstablishmentDetails:React.FC<IProps> = ({ id,type,data }) => {
     openingHours,
     costLevel,
     promoCode,
-    ageLevel,
+    ageRating,
     rating,
+    dateTime,
+    startDate,
+    endDate,
+    type:eventType
   } = data;
-
+  console.log(data)
   // Функция для открытия ссылки на карту
   const handleMapClick = () => {
     const yandexMapsBaseUrl = 'https://yandex.ru/maps/?pt=';
@@ -83,10 +88,16 @@ const EstablishmentDetails:React.FC<IProps> = ({ id,type,data }) => {
       <ImageSlider rating={rating} canLike={true} images={imgs.map((img) => img.url)} />
       <div className={'establishment-main'}>
         <MainInfoComponent
-          ageLevel={type==='establishment' ? null : ageLevel}
+          type={eventType}
+          ageLevel={type==='establishment' ? null : AgeRatingRu[ageRating]}
           title={title}
           address={data?.locationInfo}
-          openingHours={openingHours}
+          hours={{
+            openingHours,
+            dateTime,
+            startDate,
+            endDate
+          }}
           mainCategory={mainCategory}
           innerCategory={innerCategory}
           costLevel={costLevel}

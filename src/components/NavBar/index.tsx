@@ -3,8 +3,10 @@ import { Link, useLocation } from 'react-router-dom';
 import './NavBar.scss';
 
 // Импорт SVG как компоненты
+import HomeIcon_active  from './images/main_active.svg?react';
 import HomeIcon  from './images/main.svg?react';
-import EventsIcon from './images/ads.svg?react';
+import EventsIcon from './images/afisha.svg?react';
+import EventsIcon_active from './images/afisha_active.svg?react';
 import MapIcon from './images/map.svg?react';
 import ProfileIcon  from './images/profile.svg?react';
 
@@ -30,11 +32,11 @@ const NavBar = () => {
   return (
     <div className={'bottomNavBar'}>
       <Link to="/" onClick={() => setActiveTab('home')}>
-        <HomeIcon className={activeTab === 'home' ? 'activeIcon homeIcon' : 'homeIcon'} />
+        {activeTab === 'home' ? <HomeIcon_active className={'homeIcon'}/> : <HomeIcon/>}
         <span>Главная</span>
       </Link>
       <Link to="/events" onClick={() => setActiveTab('events')}>
-        <EventsIcon className={activeTab === 'events' ? 'activeIcon' : ''} />
+        {activeTab === 'events' ? <EventsIcon_active/> : <EventsIcon/>}
         <span>Афиша</span>
       </Link>
       <Link to="/map" onClick={() => setActiveTab('map')}>

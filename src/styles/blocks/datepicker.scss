@@ -3,7 +3,7 @@ $datepicker__background-color: #0000001A !default;
 $datepicker__border-color: #aeaeae !default;
 $datepicker__highlighted-color: #3dcc4a !default;
 $datepicker__muted-color: #ccc !default;
-$datepicker__selected-color: $p3 !default;
+$datepicker__selected-color: #d1e0f0 !default;
 $datepicker__text-color: #000 !default;
 $datepicker__header-color: $n7 !default;
 $datepicker__navigation-disabled-color: lighten(
@@ -707,7 +707,7 @@ $datepicker__triangle-size: 8px !default;
   &--in-range {
     border-radius: $datepicker__border-radius;
     background-color: green;
-    color: #fff;
+    color: #007AFF;
 
     &:hover {
       background-color: green;
@@ -780,7 +780,7 @@ $datepicker__triangle-size: 8px !default;
   &--in-range {
     border-radius: $datepicker__border-radius;
     background-color: $datepicker__selected-color;
-    color: $n2;
+    color: #007AFF;
 
     &:hover {
       background-color: darken($datepicker__selected-color, 5%);
@@ -789,12 +789,12 @@ $datepicker__triangle-size: 8px !default;
 
   &--keyboard-selected {
     border-radius: $datepicker__border-radius;
-    background-color: #d1e0f1;
-    color: #007AFF;
+    background-color: transparent;
+    color: #000;
 
     &:hover {
-      color: #fff;
-      background-color: #007AFF;
+      color: #000;
+      background-color: rgba(0, 0, 0, 0.1019607843);
     }
   }
 

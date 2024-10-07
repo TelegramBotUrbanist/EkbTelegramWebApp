@@ -1,4 +1,4 @@
-enum WeekDay {
+export enum WeekDay {
   MONDAY = 'MONDAY',
   TUESDAY = 'TUESDAY',
   WEDNESDAY = 'WEDNESDAY',
@@ -8,65 +8,58 @@ enum WeekDay {
   SUNDAY = 'SUNDAY',
 }
 
-enum CostLevelEnum {
-  ONE = 1,
-  TWO = 2,
-  THREE = 3,
+export enum AgeRating {
+  ZERO = 'ZERO',
+  SIX = 'SIX',
+  TWELVE = 'TWELVE',
+  SIXTEEN = 'SIXTEEN',
+  EIGHTEEN = 'EIGHTEEN',
 }
 
-interface Image {
+export enum AgeRatingRu {
+  ZERO = '0',
+  SIX = '6',
+  TWELVE = '12',
+  SIXTEEN = '16',
+  EIGHTEEN = '18',
+}
+
+export interface ImageInfo {
   id: number;
   name: string;
   url: string;
 }
 
-interface PromoCode {
+export interface CategoryInfo {
+  id: number;
   title: string;
-  description: string;
-  code: string;
-  receivedByUser: boolean;
 }
 
-interface MapLocation {
+export interface MapLocation {
+  pointTitle: string;
   latitude: string;
   longitude: string;
   mapLink: string;
-  pointTitle: string;
 }
 
-interface OpeningHours {
-  weekDay: WeekDay;
-  from: string;
-  till: string;
-  currentDay: boolean;
-}
-
-interface CategoryInfo {
-  id: number;
-  title: string;
-  serialNumber: number;
-}
+export type EventType = 'WORKING_HOURS' | 'DATE_TIME' | 'PERIOD';
 
 export interface EventDetails {
   id: number;
-  rating: number;
-  imgs: Image[];
-  categoryForEstablishmentInfoDto: CategoryInfo;
-  innerCategoryInfo: CategoryInfo | null;
   title: string;
+  type: EventType;
+  imgs: ImageInfo[];
+  categoryInfoDto: CategoryInfo;
+  innerCategoryInfo: CategoryInfo | null;
   locationInfo: string;
-  openingHours: OpeningHours[];
   description: string;
-  promoCode?: PromoCode;
   mapLocation: MapLocation;
-  costLevel: CostLevelEnum;
-  averageBill?: string;
-  hasBreakfasts: boolean;
-  hasBusinessLunches: boolean;
-  hasDelivery: boolean;
-  hasParking: boolean;
-  hasCatering: boolean;
-  hasBanquets: boolean;
   phoneNumbers: string[];
-  webSiteLink?: string;
+  webSiteLink: string;
+  ageRating: AgeRating; // Зависит от того, как поле будет использоваться (например, 'ZERO')
+  dateTime?: string; // Используется, если type === 'DATE_TIME'
+  startDate?: string; // Используется, если type === 'PERIOD'
+  endDate?: string; // Используется, если type === 'PERIOD'
+  openingHours?: { till: string; currentDay: boolean; weekDay: keyof typeof WeekDay; from: string }[];
+  inFavorites: boolean;
 }

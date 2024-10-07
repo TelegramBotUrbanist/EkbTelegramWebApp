@@ -30,7 +30,7 @@ const PromoCodeModal: React.FC<IProps> = ({ promoCode, onClose, onPromoCodeRecei
       <CustomInput
         value={promoCode.code}
         onChange={() => {}}
-        type="text"
+        type={!promoCode.receivedByUser ? 'password' : 'text'}
         placeholder="Промокод"
         onCopy={handleCopyClick}
         // onEditClick={handleCopyClick} // Кнопка для копирования

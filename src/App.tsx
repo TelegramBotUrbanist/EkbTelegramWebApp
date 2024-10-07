@@ -35,6 +35,7 @@ import NavBarLayout from './layouts/NavBarLayout';
 import EventsPage from './pages/Events';
 import EstablishmentLayout from './layouts/EstablishmentLayout';
 import EventPage from './pages/Events/components/EventPage';
+import EstablishmentPageLayout from './layouts/EstablishmentPageLayout';
 
 function App() {
   const lp = useLaunchParams();
@@ -76,23 +77,23 @@ function App() {
           </Route>
           <Route path={'establishment'} element={<EstablishmentLayout/>}>
             <Route path={`:id`} element={<EstablishmentLayout/>}>
-              <Route index element={<EstablishmentPage/>}/>
+              <Route index element={<EstablishmentPageLayout><EstablishmentPage/></EstablishmentPageLayout>}/>
               <Route path={'book'} element={<EstablishmentLayout/>}>
                 <Route index element={<BookEstablishment type={'establishment'}/>}/>
-                <Route path={`info`} element={<BookInfo/>}/>
+                <Route path={`info`} element={<BookInfo type={'establishment'}/>}/>
 
               </Route>
-              <Route path={'tables/:tableId'} element={<CreateBook/>}/>
+              <Route path={'tables/:tableId'} element={<CreateBook type={'establishment'}/>}/>
             </Route>
           </Route>
           <Route path={'events'} element={<EstablishmentLayout/>}>
             <Route path={`:id`} element={<EstablishmentLayout/>}>
-              <Route index element={<EventPage/>}/>
+              <Route index element={<EstablishmentPageLayout><EventPage/></EstablishmentPageLayout>}/>
               <Route path={'book'} element={<EstablishmentLayout/>}>
-                <Route index element={<BookEstablishment type={'event'}/>}/>
-                <Route path={`info`} element={<BookInfo/>}/>
+                <Route index element={<BookEstablishment type={'events'}/>}/>
+                <Route path={`info`} element={<BookInfo type={'events'}/>}/>
               </Route>
-              <Route path={'tables/:tableId'} element={<CreateBook/>}/>
+              <Route path={'contacts'} element={<CreateBook type={'events'} />}/>
             </Route>
           </Route>
 

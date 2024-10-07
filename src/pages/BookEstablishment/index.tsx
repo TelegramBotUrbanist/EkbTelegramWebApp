@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import CreateBook from './components/CreateBook/CreateBook.tsx';
 import Calendar from '../../components/Calendar';
 import CustomInput from '../../shared/Input';
@@ -11,9 +11,10 @@ import './BookEstablishment.scss'
 import Header from './components/Header';
 import { eventAtom, eventsAtom } from '../Events/events.atoms.ts';
 import { establishmentAtom } from '../Establishment/components/Details/details.atoms.ts';
+import Button from '../../shared/Button';
 
 interface IndexProps {
-  type: 'establishment' | 'event'; // Добавляем пропс для типа
+  type: 'establishment' | 'events'; // Добавляем пропс для типа
 }
 const Index:React.FC<IndexProps> = ({ type }) =>{
   const {id} = useParams()
@@ -37,7 +38,6 @@ const Index:React.FC<IndexProps> = ({ type }) =>{
       />
       <div className={'book_establishment__inputs'}>
         <div className={'book_establishment__inputs--header'}>Бронирование</div>
-        <Calendar label={'Дата бронирования'} />
         <CustomInput
           name={'count'}
           label={'Количество гостей'}
@@ -46,6 +46,7 @@ const Index:React.FC<IndexProps> = ({ type }) =>{
           type="number"
           placeholder="Количество гостей"
         />
+        <Calendar label={type==='establishment' ? 'Дата бронирования' : 'Дата регитсрации'} />
       </div>
 
       {/* Условный рендер столов только если это заведение */}
@@ -62,6 +63,13 @@ const Index:React.FC<IndexProps> = ({ type }) =>{
             ))}
           </div>
         </>
+      )}
+      {type==='events' && (
+        <div className={'buttonContainer'}>
+          <Link to={`events/${id}/book/info`}>
+            <Button type="primary">Далее</Button>
+          </Link>
+        </div>
       )}
     </div>
   );

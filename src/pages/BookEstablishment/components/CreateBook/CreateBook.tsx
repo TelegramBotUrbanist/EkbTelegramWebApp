@@ -30,7 +30,7 @@ const CreateBook = () => {
 
   console.log(data,'data');
   if(loading) return <></>
-debugger
+
 
 
   return (
@@ -66,7 +66,7 @@ debugger
 
       {/*  // onEditClick={handleCopyClick} // Кнопка для копирования*/}
       {/*/>*/}
-      
+
     </div>
   );
 };

@@ -10,7 +10,15 @@ interface EstablishmentCardProps {
   isDetailed?:boolean
 }
 
+
 const EstablishmentCard: React.FC<EstablishmentCardProps> = ({isDetailed, establishment }) => {
+
+  const getDateForCaption = () => {
+    if(establishment.type==='WORKING_HOURS') return ''
+    else if (establishment.type === 'DATE_TIME') return <span>13 ноября в 18:00</span>
+    else if (establishment.type === 'PERIOD') return <span>Июнь - Сентябрь</span>
+  }
+
   return (
     <div className="establishment-card">
       <div className={classNames("image-container",{"detailed":isDetailed})}>
@@ -31,6 +39,7 @@ const EstablishmentCard: React.FC<EstablishmentCardProps> = ({isDetailed, establ
           {establishment.categoryForEstablishmentInfoDto.title}
         </span>
         <div className="name">{establishment.title}</div>
+        <span>{getDateForCaption()}</span>
       </div>
     </div>
   );

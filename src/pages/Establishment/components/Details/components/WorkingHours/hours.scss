@@ -5,31 +5,6 @@
   gap: 10px;
   color: #333;
 
-
-  .hours-header {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    cursor: pointer;
-    color: $p2;  // Зеленый цвет для заголовка
-    @include caption2-s;
-
-    .arrow {
-      margin-left: 8px;
-      transition: transform 0.3s ease;
-      width: 12px; // Размер стрелки
-      height: 7px;
-    }
-
-    .up {
-      transform: rotate(180deg);  // Поворачиваем стрелку вверх при раскрытии
-    }
-
-    .down {
-      transform: rotate(0deg);  // Стрелка вниз при закрытом состоянии
-    }
-  }
-
   .hours-list {
     list-style-type: none;
     padding: 0;
@@ -59,4 +34,30 @@
       }
     }
   }
+}
+.hours-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  color: $p2;  // Зеленый цвет для заголовка
+  @include caption2-s;
+
+  .arrow {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+    width: 12px; // Размер стрелки
+    height: 7px;
+  }
+
+  .up {
+    transform: rotate(180deg);  // Поворачиваем стрелку вверх при раскрытии
+  }
+
+  .down {
+    transform: rotate(0deg);  // Стрелка вниз при закрытом состоянии
+  }
+}
+.not-clickable{
+  cursor: auto;
 }

@@ -3,24 +3,47 @@ import Header from '../Header';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import './BookInfo.scss'
 import CustomInput from '../../../../shared/Input';
-import { useAtom } from 'jotai';
-import { contactDataAtom } from '../../book.atoms.ts';
+import { useAtom, useAtomValue } from 'jotai';
+import { contactDataAtom, currentTableValueAtom } from '../../book.atoms.ts';
 import Button from '../../../../shared/Button';
 import { handleSubmitSnackBar } from '../../../../utils/snackbar.ts';
+import { useLoadableAtom } from '../../../../hooks/useLoadableAtom.ts';
+import { establishmentAtom } from '../../../Establishment/components/Details/details.atoms.ts';
+import { eventAtom } from '../../../Events/events.atoms.ts';
+import { Simulate } from 'react-dom/test-utils';
+import load = Simulate.load;
+import Loader from '../../../../shared/Loader';
+import { BookingButton } from '../../../../components/BookingButton';
+
+interface BookInfoProps {
+  type: 'establishment' | 'events'; // Добавляем пропс для типа
+}
+
+const BookInfo: React.FC<BookInfoProps> = ({ type }) => {
+  const { id } = useParams();
+  const [contactData, setContactData] = useAtom(contactDataAtom);
+  const { data: establishmentData, loading: establishmentLoading } = useLoadableAtom(establishmentAtom, );
+  const { data: eventData, loading: eventLoading } = useLoadableAtom(eventAtom, );
+  const currentTableId = useAtomValue(currentTableValueAtom)
+  const data = type === 'establishment' ? establishmentData : eventData;
+  const loading = type === 'establishment' ? establishmentLoading : eventLoading;
+
+  const handleChangeValue = (name: string, value: string) => {
+    setContactData((prev) => ({ ...prev, [name]: value }));
+  };
 
 
-const Index = () => {
-  const {id} = useParams()
-  const [contactData,setContactData] = useAtom(contactDataAtom)
 
-  const handleChangeValue = (name,value) =>{
-    setContactData((prev)=>({...prev,[name]:value}))
-  }
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  if (loading) return <Loader/>
+
   return (
     <div className={'book_contacts'}>
-      <Header title={'Kitchen'} onClose={() => navigate(`establishment/${id}`)} />
+      <Header
+        title={type === 'establishment' ? data?.title : data?.title}
+        onClose={() => navigate(type === 'establishment' ? `establishment/${id}` : `events/${id}`)}
+      />
       <Header title={`Контактная информация`} cls={'header'} />
       <div className={'book_contacts__inputs'}>
         <CustomInput
@@ -30,15 +53,14 @@ const Index = () => {
           onChange={handleChangeValue}
           type="text"
           placeholder="Алексей *"
-          // onEditClick={handleCopyClick} // Кнопка для копирования
         />
-        <CustomInput label={'Телефон'}
-                     name={'phone'}
-                     value={contactData.phone}
-                     onChange={handleChangeValue}
-                     type="text"
-                     placeholder="+7 999 999 99 99 *"
-          // onEditClick={handleCopyClick} // Кнопка для копирования
+        <CustomInput
+          label={'Телефон'}
+          name={'phone'}
+          value={contactData.phone}
+          onChange={handleChangeValue}
+          type="text"
+          placeholder="+7 999 999 99 99 *"
         />
         <CustomInput
           label={'Комментарий'}
@@ -47,25 +69,24 @@ const Index = () => {
           onChange={handleChangeValue}
           type="text"
           placeholder="Что хотели бы рассказать нам?"
-          // onEditClick={handleCopyClick} // Кнопка для копирования
         />
-        <CustomInput
-          label={'Промокод'}
-          name={'promo'}
-          value={contactData.promo}
-          onChange={handleChangeValue}
-          type="text"
-          placeholder="Промокод"
-          // onEditClick={handleCopyClick} // Кнопка для копирования
-        />
+        {/* Поле промокода отображаем только для заведения */}
+        {type === 'establishment' && (
+          <CustomInput
+            label={'Промокод'}
+            name={'promo'}
+            value={contactData.promo}
+            onChange={handleChangeValue}
+            type="text"
+            placeholder="Промокод"
+          />
+        )}
       </div>
       <div className={'buttonContainer'}>
-        <Link onClick={()=>handleSubmitSnackBar('Столик забронирован')} to={`establishment/${id}`}>
-          <Button type="primary">Забронировать</Button>
-        </Link>
+        <BookingButton type={type} id={id} data={{ ...data,number:currentTableId }}/>
       </div>
     </div>
   );
 };
 
-export default Index;
+export default BookInfo;
