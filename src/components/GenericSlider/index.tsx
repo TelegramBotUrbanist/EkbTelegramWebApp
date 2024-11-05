@@ -1,6 +1,7 @@
 import React, { FC, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import './slider.scss';
+import {useNavigate} from "react-router-dom";
 
 interface SliderItem {
   id: number;
@@ -11,13 +12,17 @@ interface SliderItem {
 interface GenericSliderProps {
   label: string;  // Общая подпись для слайдера
   items: SliderItem[];  // Массив элементов для слайдера
+    type:'events'|'establishments'
 }
-
-const GenericSlider: FC<GenericSliderProps> = ({ label, items }) => {
+//TODO: Переделать айди на получение из объекта
+const GenericSlider: FC<GenericSliderProps> = ({ label, items,type }) => {
+    const navigate = useNavigate()
   // Используем useMemo для мемоизации элементов слайдера
   const renderedItems = useMemo(() => {
     return items.map((item) => (
-      <div key={item.id} className="slider-item">
+      <div key={item.id} className="slider-item"
+           onClick={()=>navigate(`selection/${type}/0`)}
+      >
         <div className="slider-image-wrapper">
           <img
             src={item.imageUrl}

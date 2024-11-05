@@ -1,50 +1,68 @@
 import React from 'react';
 import './TableCard.scss';
-import { TableCardProps } from '../../book.types.ts'; // Подключаем файл стилей
+import { TableCardProps, TimeOfDay } from '../../book.types';
 
 interface IProps {
-  table:TableCardProps
-  onClick: ()=>void
+  table: TableCardProps;
+  onClick: () => void;
 }
 
-const TableCard: React.FC<IProps> = ({ table,onClick }) => {
+const formatTime = (time: TimeOfDay): string => {
+  return `${String(time.hour).padStart(2, '0')}:${String(time.minute).padStart(2, '0')}`;
+};
 
-  // Берем последние 5 занятых периодов (если есть)
-  const lastFiveOccupiedPeriods =  table.occupiedPeriods.slice(-5)
+const TableCard: React.FC<IProps> = ({ table, onClick }) => {
+  const {
+    tableName,
+    photoUrl,
+    capacity,
+    hallName,
+    occupied,
+    nextBooking,
+    occupiedUntil,
+    freeTimePeriodForNextBooking,
+    bookings
+  } = table;
+
   return (
     <div className="table-card">
       <div onClick={onClick} className="image-container">
         <img
-          src={table.imgs[0].imageUrl} // Берем первую картинку
-          alt={table.title}
+          src={photoUrl.imgUrl}
+          alt={tableName}
           className="table-image"
           onDragStart={(e) => e.preventDefault()}
         />
-        {/*<div className="status">*/}
-        {/*  {isOccupied ? (*/}
-        {/*    <span>Занят</span>*/}
-        {/*  ) : (*/}
-        {/*    <span>Свободен</span>*/}
-        {/*  )}*/}
-        {/*</div>*/}
-        {lastFiveOccupiedPeriods.length > 0 && (
-          <div className="statuses">
-            {lastFiveOccupiedPeriods.map((period, index) => (
-              <div key={index} className="period">
-                Занят с {period.occupiedFrom} до {period.occupiedTo}
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="statuses">
+          {!occupied && nextBooking && (
+            <div className="period pre-period">
+              Свободно до {formatTime(nextBooking)}
+              {freeTimePeriodForNextBooking &&<div className="sub-period">
+                До брони {formatTime(freeTimePeriodForNextBooking)}
+              </div>}
+            </div>
+          )}
+          {occupied && occupiedUntil && (
+            <div className="period pre-period">
+              Занято до {formatTime(occupiedUntil)}
+            </div>
+          )}
+          {bookings.slice(-5).map((booking, index) => (
+            <div key={index} className="period">
+              Занят с {formatTime(booking.bookingStart)} до {formatTime(booking.bookingEnd)}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="details">
-        <span className="location">{table.locationDescription}</span>
-        <div className={'block'}>
-        <div className="name">№{table.title}</div>
-        <div className="capacity">
-          <img src={'/capacity.svg'}/><span>{table.capacity}</span>
-        </div>
-        {/* Отображаем последние 5 занятых периодов */}
+        <span className="location">{hallName}</span>
+        <div className="block">
+          <div className="name">№{tableName}</div>
+          <div className="capacity">
+            <div className={`status-indicator ${occupied ? 'occupied' : 'available'}`} />
+            <img src="/capacity.svg" alt="Capacity" />
+            <span>{capacity}</span>
+          </div>
         </div>
       </div>
     </div>

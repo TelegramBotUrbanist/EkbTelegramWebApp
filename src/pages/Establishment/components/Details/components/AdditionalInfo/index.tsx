@@ -20,6 +20,19 @@ const AdditionalInfo: React.FC<AdditionalInfoProps> = ({ data }) => {
     webSiteLink,
   } = data;
 
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isAndroid = /Android/i.test(navigator.userAgent);
+
+    const handlePhoneClick = (phoneNumber: string) => {
+        if (isIOS) {
+            // Для iOS откроем окно для вызова
+            window.location.href = `telprompt:${phoneNumber}`;
+        } else if (isAndroid) {
+            // Для Android откроем приложение "Телефон" с номером
+            window.location.href = `tel:${phoneNumber}`;
+        }
+    };
+
   return (
     <div className="additional-info">
       <p>Средний чек: <span>{averageBill}</span></p>
@@ -27,7 +40,15 @@ const AdditionalInfo: React.FC<AdditionalInfoProps> = ({ data }) => {
       <p>Парковка: <span>{hasParking ? 'Да' : 'Нет'}</span></p>
       <p>Кейтеринг: <span>{hasCatering ? 'Да' : 'Нет'}</span></p>
       <p>Банкеты: <span>{hasBanquets ? 'Да' : 'Нет'}</span></p>
-      <p>Телефон: <span>{phoneNumbers.join(', ')}</span></p>
+      <div className={'info_telephone'}>Телефон: <div>{phoneNumbers?.map((phone, index) => (
+          <span
+              key={index}
+              onClick={() => handlePhoneClick(phone)}
+              className={'info_telephone_tel'}
+          >
+            {phone}
+          </span>
+      ))}</div></div>
       <p>Сайт: <a href={webSiteLink}>{webSiteLink}</a></p>
     </div>
   );

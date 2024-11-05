@@ -103,7 +103,7 @@ const mockEstablishment: EstablishmentDetails = {
   hasParking: true,
   hasCatering: false,
   hasBanquets: true,
-  phoneNumbers: ['+7 (343) 288 77 48'],
+  phoneNumbers: ['+7 (343) 288 77 48','+7 (343) 288 77 48'],
   webSiteLink: 'http://kitchen23.org',
   reservationTypeEnum: ReservationTypeEnum.BY_PHONE,
 };

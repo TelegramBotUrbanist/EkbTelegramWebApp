@@ -24,7 +24,7 @@ const BookInfo: React.FC<BookInfoProps> = ({ type }) => {
   const [contactData, setContactData] = useAtom(contactDataAtom);
   const { data: establishmentData, loading: establishmentLoading } = useLoadableAtom(establishmentAtom, );
   const { data: eventData, loading: eventLoading } = useLoadableAtom(eventAtom, );
-  const currentTableId = useAtomValue(currentTableValueAtom)
+  const currentTableId = useAtomValue(currentTableValueAtom).id
   const data = type === 'establishment' ? establishmentData : eventData;
   const loading = type === 'establishment' ? establishmentLoading : eventLoading;
 
@@ -40,27 +40,26 @@ const BookInfo: React.FC<BookInfoProps> = ({ type }) => {
 
   return (
     <div className={'book_contacts'}>
-      <Header
-        title={type === 'establishment' ? data?.title : data?.title}
-        onClose={() => navigate(type === 'establishment' ? `establishment/${id}` : `events/${id}`)}
-      />
+
       <Header title={`Контактная информация`} cls={'header'} />
       <div className={'book_contacts__inputs'}>
         <CustomInput
+            required={true}
           label={'Ваше имя'}
           name={'name'}
           value={contactData.name}
           onChange={handleChangeValue}
           type="text"
-          placeholder="Алексей *"
+          placeholder="Алексей"
         />
         <CustomInput
+            required={true}
           label={'Телефон'}
           name={'phone'}
           value={contactData.phone}
           onChange={handleChangeValue}
-          type="text"
-          placeholder="+7 999 999 99 99 *"
+          type="tel"
+          placeholder="+7 999 999 99 99"
         />
         <CustomInput
           label={'Комментарий'}

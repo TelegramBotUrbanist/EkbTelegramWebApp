@@ -1,10 +1,12 @@
 @import "src/styles/helpers";
 .establishment-details .additional-info {
   color: $n8;
+  z-index: 3;
+  position: relative;
   font-weight: 400;
   font-size: 15px;
   line-height: 20px;
-  margin-top: 14px;
+  margin-top: -20px;
   p{
     color: $n6;
     margin: 6px 0px;
@@ -15,6 +17,14 @@
       color: $n8;
       text-decoration: none;
 
+    }
+  }
+  .info_telephone{
+    display: flex;
+    flex-direction: row;
+    &_tel{
+      display: block;
+      margin: 0px 4px;
     }
   }
 }

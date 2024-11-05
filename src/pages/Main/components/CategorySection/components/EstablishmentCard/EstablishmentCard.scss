@@ -1,5 +1,10 @@
 @import "src/styles/helpers";
 .establishment-card {
+  .like-container{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
 
   .image-container {
     position: relative;
@@ -55,6 +60,14 @@
       color: #3c3c43;
       line-height: 16px;
       opacity: 0.6;
+    }
+    &__time{
+      color: #000;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      text-align: left;
+
     }
     .name {
       max-width: 130px;

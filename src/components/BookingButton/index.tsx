@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAtom, useAtomValue } from 'jotai';
 import { bookingModalAtom } from '../BookingModal/booking.atom.ts';
 import Button from '../../shared/Button';
-import { calendarValueAtom } from '../Calendar/state.atom.ts';
 import { formatDate } from '../../utils/date.ts';
+import { calendarValueAtom } from '../../pages/BookEstablishment/book.atoms.ts';
 
 export const BookingButton = ({ type, id, data }) => {
   const [, setBookingModal] = useAtom(bookingModalAtom);

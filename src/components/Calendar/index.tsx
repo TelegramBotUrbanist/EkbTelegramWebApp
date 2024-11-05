@@ -11,6 +11,7 @@ registerLocale('ru', ru);
 
 interface CalendarProps {
   label?: string;
+  excludedDates? :Date[]
 }
 
 const formatDateWithOnlyDigits = (date) => {
@@ -19,7 +20,7 @@ const formatDateWithOnlyDigits = (date) => {
   return formatDate;
 };
 
-const Calendar: React.FC<CalendarProps> = ({label }) => {
+const Calendar: React.FC<CalendarProps> = ({label, excludedDates }) => {
   const [value, setCalendarValue] = useAtom(calendarValueAtom);
   const datePickerRef = useRef<DatePicker|null>(null);
   const [inputValue, setInputValue] = useState<string>( '');
@@ -82,6 +83,7 @@ const Calendar: React.FC<CalendarProps> = ({label }) => {
       <DatePicker
         ref={datePickerRef}
         selected={value}
+        excludeDates={excludedDates ?? []}
         dateFormat="dd.MM.yyyy"
         onChange={handleDateChange}
         customInput={<CustomDateInput />}

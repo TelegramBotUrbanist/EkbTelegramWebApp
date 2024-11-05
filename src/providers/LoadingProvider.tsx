@@ -1,14 +1,20 @@
 import React, { createContext, useContext, useMemo } from 'react';
 import Loader from '../shared/Loader';
 
-// Создаем контекст для управления состояниями загрузки и ошибок
 const LoadingContext = createContext({});
 
-export const LoadingProvider = ({ children }) => {
+export const LoadingProvider = ({ children, isLoading, isError }) => {
   const value = useMemo(() => ({
     renderLoader: () => <Loader />,
     renderError: (error) => <div>Error: {error.message}</div>,
 }), []);
+
+  if(isLoading){
+    return value.renderLoader()
+  }
+  if(isError){
+    return value.renderError('Ошибка 123')
+  }
 
   return (
     <LoadingContext.Provider value={value}>
@@ -17,5 +23,4 @@ export const LoadingProvider = ({ children }) => {
   );
 };
 
-// Хук для получения значений контекста
 export const useLoadingContext = () => useContext(LoadingContext);

@@ -79,7 +79,23 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 8.5,
       categoryForEstablishmentInfoDto: { id: 1, title: 'Кино' },
       innerCategoryInfo: { id: 11, title: 'Художественные фильмы', serialNumber: 1 },
-      promotionExist: true,
+      type:'DATE_TIME',
+      // openingHours: [
+      //   {
+      //     weekDay: WeekDay.FRIDAY,
+      //     from: "2024-05-20T18:00:00.473Z",
+      //     till: "2024-05-20T22:00:00.473Z",
+      //     currentDay: isToday(WeekDay.FRIDAY),
+      //   },
+      //   {
+      //     weekDay: WeekDay.SATURDAY,
+      //     from: "2024-05-21T18:00:00.473Z",
+      //     till: "2024-05-21T22:00:00.473Z",
+      //     currentDay: isToday(WeekDay.SATURDAY),
+      //   },
+      // ],
+      dateTime:"2024-10-07T11:52:44.582Z",
+
     },
     {
       id: 2,
@@ -88,7 +104,24 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 7.9,
       categoryForEstablishmentInfoDto: { id: 1, title: 'Кино' },
       innerCategoryInfo: { id: 12, title: 'Документальные фильмы', serialNumber: 2 },
-      promotionExist: false,
+      type:'PERIOD',
+      startDate: "2024-10-07",
+      endDate: "2024-10-27",
+      // openingHours: [
+      //   {
+      //     weekDay: WeekDay.FRIDAY,
+      //     from: "2024-05-20T18:00:00.473Z",
+      //     till: "2024-05-20T22:00:00.473Z",
+      //     currentDay: isToday(WeekDay.FRIDAY),
+      //   },
+      //   {
+      //     weekDay: WeekDay.SATURDAY,
+      //     from: "2024-05-21T18:00:00.473Z",
+      //     till: "2024-05-21T22:00:00.473Z",
+      //     currentDay: isToday(WeekDay.SATURDAY),
+      //   },
+      // ],
+
     },
     {
       id: 5,
@@ -97,7 +130,24 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 7.9,
       categoryForEstablishmentInfoDto: { id: 1, title: 'Кино' },
       innerCategoryInfo: { id: 12, title: 'Документальные фильмы', serialNumber: 2 },
-      promotionExist: false,
+      type:'PERIOD',
+      startDate: "2024-11-07",
+      endDate: "2024-11-10",
+      // openingHours: [
+      //   {
+      //     weekDay: WeekDay.FRIDAY,
+      //     from: "2024-05-20T18:00:00.473Z",
+      //     till: "2024-05-20T22:00:00.473Z",
+      //     currentDay: isToday(WeekDay.FRIDAY),
+      //   },
+      //   {
+      //     weekDay: WeekDay.SATURDAY,
+      //     from: "2024-05-21T18:00:00.473Z",
+      //     till: "2024-05-21T22:00:00.473Z",
+      //     currentDay: isToday(WeekDay.SATURDAY),
+      //   },
+      // ],
+
     },
     {
       id: 6,
@@ -106,7 +156,22 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 7.9,
       categoryForEstablishmentInfoDto: { id: 1, title: 'Кино' },
       innerCategoryInfo: { id: 12, title: 'Документальные фильмы', serialNumber: 2 },
-      promotionExist: false,
+      type:'WORKING_HOURS',
+      openingHours: [
+        {
+          weekDay: WeekDay.FRIDAY,
+          from: "2024-05-20T18:00:00.473Z",
+          till: "2024-05-20T22:00:00.473Z",
+          currentDay: isToday(WeekDay.FRIDAY),
+        },
+        {
+          weekDay: WeekDay.SATURDAY,
+          from: "2024-05-21T18:00:00.473Z",
+          till: "2024-05-21T22:00:00.473Z",
+          currentDay: isToday(WeekDay.SATURDAY),
+        },
+      ],
+
     },
   ],
   2: [
@@ -117,7 +182,22 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 9.0,
       categoryForEstablishmentInfoDto: { id: 2, title: 'Концерты' },
       innerCategoryInfo: { id: 21, title: 'Рок-концерты', serialNumber: 1 },
-      promotionExist: false,
+      type:'WORKING_HOURS',
+      openingHours: [
+        {
+          weekDay: WeekDay.FRIDAY,
+          from: "2024-05-20T18:00:00.473Z",
+          till: "2024-05-20T22:00:00.473Z",
+          currentDay: isToday(WeekDay.FRIDAY),
+        },
+        {
+          weekDay: WeekDay.SATURDAY,
+          from: "2024-05-21T18:00:00.473Z",
+          till: "2024-05-21T22:00:00.473Z",
+          currentDay: isToday(WeekDay.SATURDAY),
+        },
+      ],
+
     },
     {
       id: 4,
@@ -126,7 +206,22 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 9.5,
       categoryForEstablishmentInfoDto: { id: 2, title: 'Концерты' },
       innerCategoryInfo: { id: 22, title: 'Классическая музыка', serialNumber: 2 },
-      promotionExist: true,
+      type:'WORKING_HOURS',
+      openingHours: [
+        {
+          weekDay: WeekDay.FRIDAY,
+          from: "2024-05-20T18:00:00.473Z",
+          till: "2024-05-20T22:00:00.473Z",
+          currentDay: isToday(WeekDay.FRIDAY),
+        },
+        {
+          weekDay: WeekDay.SATURDAY,
+          from: "2024-05-21T18:00:00.473Z",
+          till: "2024-05-21T22:00:00.473Z",
+          currentDay: isToday(WeekDay.SATURDAY),
+        },
+      ],
+
     },
     {
       id: 7,
@@ -135,7 +230,22 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 9.0,
       categoryForEstablishmentInfoDto: { id: 2, title: 'Концерты' },
       innerCategoryInfo: { id: 21, title: 'Рок-концерты', serialNumber: 1 },
-      promotionExist: false,
+      type:'WORKING_HOURS',
+      openingHours: [
+        {
+          weekDay: WeekDay.FRIDAY,
+          from: "2024-05-20T18:00:00.473Z",
+          till: "2024-05-20T22:00:00.473Z",
+          currentDay: isToday(WeekDay.FRIDAY),
+        },
+        {
+          weekDay: WeekDay.SATURDAY,
+          from: "2024-05-21T18:00:00.473Z",
+          till: "2024-05-21T22:00:00.473Z",
+          currentDay: isToday(WeekDay.SATURDAY),
+        },
+      ],
+
     },
     {
       id: 8,
@@ -144,7 +254,22 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 9.0,
       categoryForEstablishmentInfoDto: { id: 2, title: 'Концерты' },
       innerCategoryInfo: { id: 21, title: 'Рок-концерты', serialNumber: 1 },
-      promotionExist: false,
+      type:'WORKING_HOURS',
+      openingHours: [
+        {
+          weekDay: WeekDay.FRIDAY,
+          from: "2024-05-20T18:00:00.473Z",
+          till: "2024-05-20T22:00:00.473Z",
+          currentDay: isToday(WeekDay.FRIDAY),
+        },
+        {
+          weekDay: WeekDay.SATURDAY,
+          from: "2024-05-21T18:00:00.473Z",
+          till: "2024-05-21T22:00:00.473Z",
+          currentDay: isToday(WeekDay.SATURDAY),
+        },
+      ],
+
     },
   ],
   3: [
@@ -155,7 +280,22 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 8.9,
       categoryForEstablishmentInfoDto: { id: 3, title: 'Театры' },
       innerCategoryInfo: null,
-      promotionExist: false,
+      type:'WORKING_HOURS',
+      openingHours: [
+        {
+          weekDay: WeekDay.FRIDAY,
+          from: "2024-05-20T18:00:00.473Z",
+          till: "2024-05-20T22:00:00.473Z",
+          currentDay: isToday(WeekDay.FRIDAY),
+        },
+        {
+          weekDay: WeekDay.SATURDAY,
+          from: "2024-05-21T18:00:00.473Z",
+          till: "2024-05-21T22:00:00.473Z",
+          currentDay: isToday(WeekDay.SATURDAY),
+        },
+      ],
+
     },
     {
       id: 10,
@@ -164,7 +304,22 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 8.7,
       categoryForEstablishmentInfoDto: { id: 3, title: 'Театры' },
       innerCategoryInfo: null,
-      promotionExist: true,
+      type:'WORKING_HOURS',
+      openingHours: [
+        {
+          weekDay: WeekDay.FRIDAY,
+          from: "2024-05-20T18:00:00.473Z",
+          till: "2024-05-20T22:00:00.473Z",
+          currentDay: isToday(WeekDay.FRIDAY),
+        },
+        {
+          weekDay: WeekDay.SATURDAY,
+          from: "2024-05-21T18:00:00.473Z",
+          till: "2024-05-21T22:00:00.473Z",
+          currentDay: isToday(WeekDay.SATURDAY),
+        },
+      ],
+
     },
     {
       id: 11,
@@ -174,6 +329,22 @@ const mockEventMapData: EstablishmentMapResponse = {
       categoryForEstablishmentInfoDto: { id: 3, title: 'Театры' },
       innerCategoryInfo: null,
       promotionExist: false,
+      type:'WORKING_HOURS',
+      openingHours: [
+        {
+          weekDay: WeekDay.FRIDAY,
+          from: "2024-05-20T18:00:00.473Z",
+          till: "2024-05-20T22:00:00.473Z",
+          currentDay: isToday(WeekDay.FRIDAY),
+        },
+        {
+          weekDay: WeekDay.SATURDAY,
+          from: "2024-05-21T18:00:00.473Z",
+          till: "2024-05-21T22:00:00.473Z",
+          currentDay: isToday(WeekDay.SATURDAY),
+        },
+      ],
+
     },
     {
       id: 12,
@@ -182,7 +353,22 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 8.9,
       categoryForEstablishmentInfoDto: { id: 3, title: 'Театры' },
       innerCategoryInfo: null,
-      promotionExist: false,
+      type:'WORKING_HOURS',
+      openingHours: [
+        {
+          weekDay: WeekDay.FRIDAY,
+          from: "2024-05-20T18:00:00.473Z",
+          till: "2024-05-20T22:00:00.473Z",
+          currentDay: isToday(WeekDay.FRIDAY),
+        },
+        {
+          weekDay: WeekDay.SATURDAY,
+          from: "2024-05-21T18:00:00.473Z",
+          till: "2024-05-21T22:00:00.473Z",
+          currentDay: isToday(WeekDay.SATURDAY),
+        },
+      ],
+
     },
   ],
   4: [
@@ -193,7 +379,6 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 9.3,
       categoryForEstablishmentInfoDto: { id: 4, title: 'Стендап' },
       innerCategoryInfo: null,
-      promotionExist: true,
     },
     {
       id: 8,
@@ -202,7 +387,6 @@ const mockEventMapData: EstablishmentMapResponse = {
       serialNumber: 9.1,
       categoryForEstablishmentInfoDto: { id: 4, title: 'Стендап' },
       innerCategoryInfo: null,
-      promotionExist: false,
     },
   ],
 };
@@ -218,6 +402,21 @@ const mockEventListData: EstablishmentListResponse = [
     categoryForEstablishmentInfoDto: { id: 1, title: 'Кино' },
     innerCategoryInfo: { id: 12, title: 'Документальные фильмы', serialNumber: 2 },
     promotionExist: true,
+    type:'WORKING_HOURS',
+    openingHours: [
+      {
+        weekDay: WeekDay.FRIDAY,
+        from: "2024-05-20T18:00:00.473Z",
+        till: "2024-05-20T22:00:00.473Z",
+        currentDay: isToday(WeekDay.FRIDAY),
+      },
+      {
+        weekDay: WeekDay.SATURDAY,
+        from: "2024-05-21T18:00:00.473Z",
+        till: "2024-05-21T22:00:00.473Z",
+        currentDay: isToday(WeekDay.SATURDAY),
+      },
+    ],
   },
   {
     id: 10,
@@ -227,6 +426,22 @@ const mockEventListData: EstablishmentListResponse = [
     categoryForEstablishmentInfoDto: { id: 2, title: 'Концерты' },
     innerCategoryInfo: { id: 21, title: 'Рок-концерты', serialNumber: 1 },
     promotionExist: true,
+    type:'WORKING_HOURS',
+    openingHours: [
+      {
+        weekDay: WeekDay.FRIDAY,
+        from: "2024-05-20T18:00:00.473Z",
+        till: "2024-05-20T22:00:00.473Z",
+        currentDay: isToday(WeekDay.FRIDAY),
+      },
+      {
+        weekDay: WeekDay.SATURDAY,
+        from: "2024-05-21T18:00:00.473Z",
+        till: "2024-05-21T22:00:00.473Z",
+        currentDay: isToday(WeekDay.SATURDAY),
+      },
+    ],
+
   },
   {
     id: 11,
@@ -236,6 +451,22 @@ const mockEventListData: EstablishmentListResponse = [
     categoryForEstablishmentInfoDto: { id: 3, title: 'Театры' },
     innerCategoryInfo: null,
     promotionExist: false,
+    type:'WORKING_HOURS',
+    openingHours: [
+      {
+        weekDay: WeekDay.FRIDAY,
+        from: "2024-05-20T18:00:00.473Z",
+        till: "2024-05-20T22:00:00.473Z",
+        currentDay: isToday(WeekDay.FRIDAY),
+      },
+      {
+        weekDay: WeekDay.SATURDAY,
+        from: "2024-05-21T18:00:00.473Z",
+        till: "2024-05-21T22:00:00.473Z",
+        currentDay: isToday(WeekDay.SATURDAY),
+      },
+    ],
+
   },
   {
     id: 12,
@@ -245,6 +476,22 @@ const mockEventListData: EstablishmentListResponse = [
     categoryForEstablishmentInfoDto: { id: 4, title: 'Стендап' },
     innerCategoryInfo: null,
     promotionExist: true,
+    type:'WORKING_HOURS',
+    openingHours: [
+      {
+        weekDay: WeekDay.FRIDAY,
+        from: "2024-05-20T18:00:00.473Z",
+        till: "2024-05-20T22:00:00.473Z",
+        currentDay: isToday(WeekDay.FRIDAY),
+      },
+      {
+        weekDay: WeekDay.SATURDAY,
+        from: "2024-05-21T18:00:00.473Z",
+        till: "2024-05-21T22:00:00.473Z",
+        currentDay: isToday(WeekDay.SATURDAY),
+      },
+    ],
+
   },
 ];
 

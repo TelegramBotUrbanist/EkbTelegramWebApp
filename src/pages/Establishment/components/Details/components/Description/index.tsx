@@ -9,8 +9,8 @@ const DescriptionComponent = ({ description }) => {
     setIsExpanded(!isExpanded);
   };
 
-  const isContentLong = description.length > MAX_LENGTH;
-  const displayedContent = description.slice(0, MAX_LENGTH) + (isContentLong ? '' : '');
+  const isContentLong = description?.length > MAX_LENGTH;
+  const displayedContent = description?.slice(0, MAX_LENGTH) + (isContentLong ? '' : '');
 
   return (
     <div className={`description ${isExpanded ? 'expanded' : ''}`}>

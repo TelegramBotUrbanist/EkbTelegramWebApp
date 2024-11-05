@@ -25,7 +25,7 @@ const EstablishmentList: React.FC<EstablishmentListProps> = ({ establishments,ty
         //   {restaurant.title}
         // </Link>
         <Link to={type === 'establishments' ? `/establishment/${0}` : `/events/${0}`} className={'card'}>
-          <EstablishmentCard isDetailed={rest.isDetailed} key={establishment.id} establishment={establishment} />
+          <EstablishmentCard onLikeClick={()=>console.log(`${type} liked, ${establishment?.inFavorites}`)} isDetailed={rest.isDetailed} key={establishment.id} establishment={establishment} />
         </Link>
       ))}
     </motion.div>

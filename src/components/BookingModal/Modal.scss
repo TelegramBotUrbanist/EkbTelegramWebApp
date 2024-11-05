@@ -7,13 +7,15 @@
   background: #b2b3b2;
   border-radius: 16px;
   padding: 24px;
-  height: 277px;
+  padding-top: 0px;
+  height: 257px;
   width: 249px;
   text-align: center;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   margin: auto;
   .image_modal{
+    margin-top: 62px;
     width: 70px;
     height: 70px;
   }

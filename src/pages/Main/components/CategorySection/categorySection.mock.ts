@@ -12,6 +12,7 @@ const mockMapData: EstablishmentMapResponse = {
       categoryForEstablishmentInfoDto: { id: 1, title: 'Кафе' },
       innerCategoryInfo: null,
       promotionExist: true,
+      inFavorites:true,
     },
     {
       id: 2,
@@ -21,6 +22,8 @@ const mockMapData: EstablishmentMapResponse = {
       categoryForEstablishmentInfoDto: { id: 1, title: 'Кафе' },
       innerCategoryInfo: null,
       promotionExist: false,
+      inFavorites:true,
+
     },
     {
       id: 3,
@@ -30,6 +33,8 @@ const mockMapData: EstablishmentMapResponse = {
       categoryForEstablishmentInfoDto: { id: 1, title: 'Кафе' },
       innerCategoryInfo: null,
       promotionExist: false,
+      inFavorites:true,
+
     },
   ],
   2: [
@@ -41,6 +46,8 @@ const mockMapData: EstablishmentMapResponse = {
       categoryForEstablishmentInfoDto: { id: 2, title: 'Кофейни' },
       innerCategoryInfo: null,
       promotionExist: false,
+      inFavorites:true,
+
     },
     {
       id: 5,
@@ -50,6 +57,8 @@ const mockMapData: EstablishmentMapResponse = {
       categoryForEstablishmentInfoDto: { id: 2, title: 'Кофейни' },
       innerCategoryInfo: null,
       promotionExist: true,
+      inFavorites:true,
+
     },
   ],
   3: [
@@ -61,6 +70,8 @@ const mockMapData: EstablishmentMapResponse = {
       categoryForEstablishmentInfoDto: { id: 3, title: 'Рестораны' },
       innerCategoryInfo: null,
       promotionExist: false,
+      inFavorites:true,
+
     },
     {
       id: 7,
@@ -70,6 +81,8 @@ const mockMapData: EstablishmentMapResponse = {
       categoryForEstablishmentInfoDto: { id: 3, title: 'Рестораны' },
       innerCategoryInfo: null,
       promotionExist: true,
+      inFavorites:true,
+
     },
     {
       id: 8,
@@ -79,6 +92,8 @@ const mockMapData: EstablishmentMapResponse = {
       categoryForEstablishmentInfoDto: { id: 3, title: 'Рестораны' },
       innerCategoryInfo: null,
       promotionExist: false,
+      inFavorites:true,
+
     },
   ],
 };
@@ -93,6 +108,8 @@ const mockListData: EstablishmentListResponse = [
     categoryForEstablishmentInfoDto: { id: 1, title: 'Кафе' },
     innerCategoryInfo: { id: 1, title: 'Пиццерия', serialNumber: 1 },
     promotionExist: true,
+    inFavorites:true,
+
   },
   {
     id: 10,
@@ -102,6 +119,8 @@ const mockListData: EstablishmentListResponse = [
     categoryForEstablishmentInfoDto: { id: 3, title: 'Рестораны' },
     innerCategoryInfo: { id: 2, title: 'Стейкхаус', serialNumber: 2 },
     promotionExist: true,
+    inFavorites:true,
+
   },
   {
     id: 11,
@@ -111,6 +130,8 @@ const mockListData: EstablishmentListResponse = [
     categoryForEstablishmentInfoDto: { id: 3, title: 'Рестораны' },
     innerCategoryInfo: { id: 3, title: 'Морепродукты', serialNumber: 3 },
     promotionExist: false,
+    inFavorites:true,
+
   },
   {
     id: 12,
@@ -120,6 +141,8 @@ const mockListData: EstablishmentListResponse = [
     categoryForEstablishmentInfoDto: { id: 4, title: 'Бары' },
     innerCategoryInfo: { id: 4, title: 'Пабы', serialNumber: 1 },
     promotionExist: false,
+    inFavorites:true,
+
   },
   {
     id: 13,
@@ -129,6 +152,8 @@ const mockListData: EstablishmentListResponse = [
     categoryForEstablishmentInfoDto: { id: 4, title: 'Бары' },
     innerCategoryInfo: { id: 5, title: 'Коктейльные бары', serialNumber: 2 },
     promotionExist: true,
+    inFavorites:true,
+
   },
   {
     id: 14,
@@ -138,6 +163,8 @@ const mockListData: EstablishmentListResponse = [
     categoryForEstablishmentInfoDto: { id: 1, title: 'Кафе' },
     innerCategoryInfo: null,
     promotionExist: false,
+    inFavorites:true,
+
   },
 ];
 

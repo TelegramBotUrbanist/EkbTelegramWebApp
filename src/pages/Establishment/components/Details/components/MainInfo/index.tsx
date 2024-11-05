@@ -3,7 +3,7 @@ import './mainInfo.scss'
 import { CostLevelEnum } from '../../details.types.ts';
 import CostLevel from '../CostLevel';
 import HoursComponent from '../WorkingHours';
-import { AgeRating, EventType } from '../../../../../Events/events.types.ts';
+import {AgeRating, AgeRatingRu, EventType} from '../../../../../Events/events.types.ts';
 
 interface CategoryInfo {
   id: number;
@@ -23,14 +23,14 @@ interface Hours {
 }
 
 export interface IProps {
-  mainCategory: CategoryInfo;
-  innerCategory: CategoryInfo | null;
+  mainCategory?: CategoryInfo;
+  innerCategory?: CategoryInfo | null;
   costLevel?: CostLevelEnum;
   title: string;
-  address: string;
-  hours: Hours;
-  ageLevel: AgeRating;
-  type: EventType;
+  address?: string;
+  hours?: Hours;
+  ageLevel?: AgeRating;
+  type?: EventType;
 }
 const MainInfoComponent: React.FC<IProps> = ({
                                                mainCategory,
@@ -43,15 +43,15 @@ const MainInfoComponent: React.FC<IProps> = ({
                                                type
                                              }) => {
   return <div className={'establishment-page__mainInfo'}>
-    <div className={'establishment-page__mainInfo_categories'}>
-      <span className={'establishment-page__mainInfo_categories_category'}>{mainCategory?.title}</span>
-      <span className={'establishment-page__mainInfo_categories_category'}>{innerCategory?.title}</span>
+      {mainCategory?.id || innerCategory?.id ? <div className={'establishment-page__mainInfo_categories'}>
+        {mainCategory?.id && <span className={'establishment-page__mainInfo_categories_category'}>{mainCategory?.title}</span> }
+        {innerCategory?.id && <span className={'establishment-page__mainInfo_categories_category'}>{innerCategory?.title}</span> }
       {costLevel && <CostLevel level={costLevel}/>}
-      {ageLevel && <span className={'establishment-page__mainInfo_categories_category last'} >{ageLevel}+</span>}
-    </div>
+      {ageLevel && <span className={'establishment-page__mainInfo_categories_category last'} >{AgeRatingRu[ageLevel]}+</span>}
+    </div> : <></>}
     <div className={'establishment-page__mainInfo_title'}>{title}</div>
-    <div className={'establishment-page__mainInfo_address'}>{address}</div>
-    <HoursComponent type={type} openingHours={hours.openingHours} endDate={hours.endDate} startDate={hours.startDate} dateTime={hours.dateTime}  />
+      {address && <div className={'establishment-page__mainInfo_address'}>{address}</div>}
+      {hours && type && <HoursComponent type={type} openingHours={hours.openingHours} endDate={hours.endDate} startDate={hours.startDate} dateTime={hours.dateTime}  />}
   </div>;
 };
 

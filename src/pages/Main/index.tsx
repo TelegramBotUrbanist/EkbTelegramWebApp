@@ -50,7 +50,7 @@ const MainPage = () => {
           <ImageSlider images={images} />
 
           <List className={'main__page'}>
-            <CollectionSlider collectionsAtom={collectionsAtom} />
+            <CollectionSlider type="establishments" collectionsAtom={collectionsAtom} />
             <SearchBar value={searchValue} onChange={handleSearchChange} />
 
             <CategoriesBar atom={categoriesAtom} selectedCategoryAtom={selectedCategoryAtom} selectedInnerCategoryAtom={selectedSubcategoriesAtom}/>

@@ -17,9 +17,9 @@ const EstablishmentPage = () => {
       setEstablishmentId(parseInt(id, 10)); // Устанавливаем ID заведения
     }
 
-    return () => {
-      setEstablishmentId(null); // Сбрасываем ID при размонтировании
-    };
+    // return () => {
+    //   setEstablishmentId(null); // Сбрасываем ID при размонтировании
+    // };
   }, [id, setEstablishmentId]);
 
   if (loading) return <Loader />;

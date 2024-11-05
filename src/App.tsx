@@ -33,9 +33,13 @@ import TableInfo from './components/TableInfo';
 import BookInfo from './pages/BookEstablishment/components/BookInfo';
 import NavBarLayout from './layouts/NavBarLayout';
 import EventsPage from './pages/Events';
-import EstablishmentLayout from './layouts/EstablishmentLayout';
+import OutletLayout from './layouts/Establishment/EstablishmentLayout';
 import EventPage from './pages/Events/components/EventPage';
-import EstablishmentPageLayout from './layouts/EstablishmentPageLayout';
+import EstablishmentPageLayout from './layouts/Establishment/EstablishmentPageLayout';
+import Selection from "./pages/Selection";
+import AvailableTables from './pages/BookEstablishment/components/AvailableTables';
+import WithBookDetail from './layouts/Establishment/WithBookDetail';
+import EstablishmentWithIdLayout from './layouts/Establishment/EstablishmentWithIdLayout';
 
 function App() {
   const lp = useLaunchParams();
@@ -68,28 +72,34 @@ function App() {
       platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}
     >
       <LoadingProvider>
-      <Router location={location} navigator={reactNavigator}>
+      <Router  location={location} navigator={reactNavigator}>
         <Routes>
-          <Route path={'/'} element={<NavBarLayout/>}>
-            <Route index element={<MainPage />} />
-            <Route path={'events'} element={<EventsPage />} />
+          <Route  path={'/'} element={<NavBarLayout/>}>
+            <Route index element={<MainPage />} >
+              {/*<Route path={'establishments/selection'} element={<Selection/>}></Route>*/}
+            </Route>
+            <Route path={'events'} element={<EventsPage />} >
+              {/*<Route path={'selection'} element={<Selection/>}></Route>*/}
+            </Route>
             {/*<Route path={'/events'} element={<MapPage />} />*/}
           </Route>
-          <Route path={'establishment'} element={<EstablishmentLayout/>}>
-            <Route path={`:id`} element={<EstablishmentLayout/>}>
-              <Route index element={<EstablishmentPageLayout><EstablishmentPage/></EstablishmentPageLayout>}/>
-              <Route path={'book'} element={<EstablishmentLayout/>}>
-                <Route index element={<BookEstablishment type={'establishment'}/>}/>
-                <Route path={`info`} element={<BookInfo type={'establishment'}/>}/>
+          <Route path={'selection/:type/:id'} element={<Selection/>}/>
 
+          <Route path={'establishment'} element={<OutletLayout/>}>
+            <Route path={`:id`} element={<OutletLayout/>}>
+              <Route index element={<EstablishmentPageLayout><EstablishmentPage/></EstablishmentPageLayout>}/>
+              <Route path={'book'} element={<EstablishmentWithIdLayout/>}>
+                <Route index element={<BookEstablishment type={'establishment'}/>}/>
+                <Route  element={<WithBookDetail><AvailableTables/></WithBookDetail>} path={'tables'}/>
+                <Route path={`info`} element={<WithBookDetail><BookInfo type={'establishment'}/></WithBookDetail>}/>
+                <Route path={'tables/:tableId'} element={<WithBookDetail><CreateBook type={'establishment'}/></WithBookDetail>}/>
               </Route>
-              <Route path={'tables/:tableId'} element={<CreateBook type={'establishment'}/>}/>
             </Route>
           </Route>
-          <Route path={'events'} element={<EstablishmentLayout/>}>
-            <Route path={`:id`} element={<EstablishmentLayout/>}>
+          <Route path={'events'} element={<OutletLayout/>}>
+            <Route path={`:id`} element={<OutletLayout/>}>
               <Route index element={<EstablishmentPageLayout><EventPage/></EstablishmentPageLayout>}/>
-              <Route path={'book'} element={<EstablishmentLayout/>}>
+              <Route path={'book'} element={<OutletLayout/>}>
                 <Route index element={<BookEstablishment type={'events'}/>}/>
                 <Route path={`info`} element={<BookInfo type={'events'}/>}/>
               </Route>

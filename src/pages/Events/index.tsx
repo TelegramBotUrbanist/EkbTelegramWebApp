@@ -44,7 +44,7 @@ const EventsPage = () => {
           <ImageSlider images={images} />
 
           <List className={'main__page'}>
-            <CollectionSlider collectionsAtom={eventCollectionsAtom} />
+            <CollectionSlider type={'events'} collectionsAtom={eventCollectionsAtom} />
             <SearchBar value={searchValue} onChange={handleSearchChange} />
 
             <CategoriesBar atom={eventCategoriesAtom} selectedCategoryAtom={selectedEventCategoryAtom} selectedInnerCategoryAtom={selectedEventSubcategoriesAtom}/>

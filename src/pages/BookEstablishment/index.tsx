@@ -4,7 +4,7 @@ import CreateBook from './components/CreateBook/CreateBook.tsx';
 import Calendar from '../../components/Calendar';
 import CustomInput from '../../shared/Input';
 import { useAtom } from 'jotai';
-import { calendarValueAtom, tablesForDateAtom } from './book.atoms.ts';
+import { calendarValueAtom, guestCountAtom, tablesForDateAtom } from './book.atoms.ts';
 import { useLoadableAtom } from '../../hooks/useLoadableAtom.ts';
 import TableCard from './components/TableCard';
 import './BookEstablishment.scss'
@@ -12,21 +12,22 @@ import Header from './components/Header';
 import { eventAtom, eventsAtom } from '../Events/events.atoms.ts';
 import { establishmentAtom } from '../Establishment/components/Details/details.atoms.ts';
 import Button from '../../shared/Button';
+import BookingTime from '../Establishment/components/Details/components/BookingTime';
 
 interface IndexProps {
   type: 'establishment' | 'events'; // Добавляем пропс для типа
 }
 const Index:React.FC<IndexProps> = ({ type }) =>{
   const {id} = useParams()
-  const { data: establishmentData, loading: establishmentLoading } = useLoadableAtom(establishmentAtom, );
+  const [guestCount,setGuestCount] = useAtom(guestCountAtom)
+  const { data: establishmentData, loading: establishmentLoading } = useLoadableAtom(establishmentAtom,[id] );
   const { data: eventData, loading: eventLoading } = useLoadableAtom(eventAtom, );
 
   const data = type === 'establishment' ? establishmentData : eventData;
+  console.log(data,'data');
   const loading = type === 'establishment' ? establishmentLoading : eventLoading;
 
-  const { data: tablesData, loading: tablesLoading } = useLoadableAtom(tablesForDateAtom, [],{
-    enabled: type === 'establishment', // Загружаем столы только если это заведение
-  });
+
   const navigate = useNavigate()
   if(loading) return <></>
 
@@ -41,27 +42,20 @@ const Index:React.FC<IndexProps> = ({ type }) =>{
         <CustomInput
           name={'count'}
           label={'Количество гостей'}
-          value={1}
-          onChange={() => {}}
+          value={guestCount}
+          onChange={(name, value) => setGuestCount(value as Number)}
           type="number"
           placeholder="Количество гостей"
         />
-        <Calendar label={type==='establishment' ? 'Дата бронирования' : 'Дата регитсрации'} />
+        <Calendar label={type==='establishment' ? 'Дата бронирования' : 'Дата регистрации'} />
       </div>
 
       {/* Условный рендер столов только если это заведение */}
       {type === 'establishment' && (
         <>
-          <Header title={'Столы'} cls={'header'} />
-          <div className='tables'>
-            {tablesData?.availableTables.map((table) => (
-              <TableCard
-                onClick={() => navigate(`establishment/${id}/tables/${table.id}`, { replace: true })}
-                key={table.id}
-                table={table}
-              />
-            ))}
-          </div>
+          <BookingTime tableId={id}/>
+
+
         </>
       )}
       {type==='events' && (

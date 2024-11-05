@@ -1068,3 +1068,14 @@ $datepicker__triangle-size: 8px !default;
 .react-datepicker{
   background-color: #eeeeee;
 }
+.react-datepicker__tab-loop{
+  position: relative;
+}
+.react-datepicker-popper{
+  position: relative!important;
+  .react-datepicker{
+    position: relative;
+    //z-index: unset;
+    right: auto;
+  }
+}

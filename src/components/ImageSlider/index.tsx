@@ -4,15 +4,16 @@ import 'slick-carousel/slick/slick-theme.css';
 import './ImageSlider.scss';
 import React, { useEffect, useRef } from 'react';
 import { useAtom } from 'jotai';
-import { currentIndexAtom } from './slider.atoms.ts';
-import Rating from '../../shared/Rating';
-import LikeButton from '../../shared/LikeButton';
+import LikeButton from "../../shared/LikeButton";
+import Rating from "../../shared/Rating";
+import {currentIndexAtom} from "./slider.atoms.ts";
+import Close from "../../shared/Close";
 
 
 
 const SlideIntervalConst = 7000;
 
-const ImageSlider: React.FC<{ images: string[],rating?:number,canLike?:boolean }> = ({ images, rating,canLike }) => {
+const ImageSlider: React.FC<{ images: string[],rating?:number,canLike?:boolean, isLiked?:boolean,onClose?:()=>void }> = ({ images, rating,canLike,isLiked,onClose }) => {
   debugger
   const [currentIndex, setCurrentIndex] = useAtom(currentIndexAtom);
   const intervalRef = useRef<NodeJS.Timeout | string | number | undefined>(undefined);
@@ -35,7 +36,7 @@ const ImageSlider: React.FC<{ images: string[],rating?:number,canLike?:boolean }
       stopSlideShow();
       setCurrentIndex(0);  // Reset the currentIndex when component unmounts
     };
-  }, [images.length]);
+  }, [images?.length]);
 
   const sliderRef = useRef<Slider | null>(null);
 
@@ -59,7 +60,7 @@ const ImageSlider: React.FC<{ images: string[],rating?:number,canLike?:boolean }
   return (
     <div className="image-slider">
       <Slider ref={sliderRef} {...settings}>
-        {images.map((src, index) => (
+        {images?.map((src, index) => (
           <div key={index} className="slider-image-wrapper">
             {rating && (
               <div className="rating-container">
@@ -69,14 +70,20 @@ const ImageSlider: React.FC<{ images: string[],rating?:number,canLike?:boolean }
             <img src={src} alt={`Image ${index + 1}`} className="slider-image" />
             {canLike && (
               <div className="like-container">
-                <LikeButton/>
+                <LikeButton isLiked={isLiked} iconSrc={'/like-big.svg'}/>
               </div>
             )}
+            {onClose && (
+                <div className="close-container">
+                  <Close onClose={onClose}/>
+                </div>
+            )}
+
           </div>
         ))}
       </Slider>
       <div className="progress-indicator">
-        {images.length > 1 && images.map((_, index) => (
+        {images?.length > 1 && images?.map((_, index) => (
           <div key={index} className="progress-segment">
             <div
               className={`progress-bar ${currentIndex === index ? 'active' : ''}`}

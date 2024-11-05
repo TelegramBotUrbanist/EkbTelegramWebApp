@@ -78,3 +78,7 @@ export interface EstablishmentDetails {
   webSiteLink: string;
   reservationTypeEnum: ReservationTypeEnum;
 }
+
+
+
+

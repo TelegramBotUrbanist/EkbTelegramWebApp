@@ -63,7 +63,7 @@ const EstablishmentDetails:React.FC<IProps> = ({ id,type,data }) => {
     const yandexMapsBaseUrl = 'https://yandex.ru/maps/?pt=';
     const yandexAppUrl = 'yandexmaps://maps.yandex.ru/?pt='; // Для открытия через приложение
 
-    const coordinates = `${mapLocation.longitude},${mapLocation.latitude}`;
+    const coordinates = `${mapLocation?.longitude},${mapLocation?.latitude}`;
 
     if (isMobile) {
       // Открыть приложение Яндекс.Карт на мобильных устройствах
@@ -85,7 +85,7 @@ const EstablishmentDetails:React.FC<IProps> = ({ id,type,data }) => {
 
   return (
     <div className="establishment-details">
-      <ImageSlider rating={rating} canLike={true} images={imgs.map((img) => img.url)} />
+      <ImageSlider rating={rating} canLike={true} images={imgs?.map((img) => img.url)} />
       <div className={'establishment-main'}>
         <MainInfoComponent
           type={eventType}
@@ -122,9 +122,9 @@ const EstablishmentDetails:React.FC<IProps> = ({ id,type,data }) => {
         {/* Добавляем обработчик клика для карты */}
         <div onClick={handleMapClick}>
           <MapComponent
-            latitude={mapLocation.latitude}
-            longitude={mapLocation.longitude}
-            pointTitle={mapLocation.pointTitle}
+            latitude={mapLocation?.latitude}
+            longitude={mapLocation?.longitude}
+            pointTitle={mapLocation?.pointTitle}
           />
         </div>
         {type === 'establishment' && <AdditionalInfo data={data}/>}

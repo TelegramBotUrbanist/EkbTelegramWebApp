@@ -4,6 +4,11 @@
   height: 292px;
   overflow: hidden;
   position: relative;
+  .close-container{
+  position: absolute;
+    top: 16px;
+    right: 16px;
+  }
 }
 
 .slider-container {
@@ -53,8 +58,9 @@
 
 .like-container{
   position: absolute;
-  z-index: 10;
+  z-index: 3;
 }
+
 
 .rating-container {
   position: absolute;

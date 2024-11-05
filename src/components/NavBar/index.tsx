@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import './NavBar.scss';
 
 // Импорт SVG как компоненты
@@ -12,12 +12,13 @@ import ProfileIcon  from './images/profile.svg?react';
 
 const NavBar = () => {
   const location = useLocation(); // Получаем текущий путь
+    const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState<string>('home');
 
   // Обновляем activeTab на основе текущего маршрута
   useEffect(() => {
     const path = location.pathname;
-
+      // if(path === '/') navigate('/establishments')
     if (path === '/') {
       setActiveTab('home');
     } else if (path.startsWith('/events')) {

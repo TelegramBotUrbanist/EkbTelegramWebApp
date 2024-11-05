@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useAtom } from 'jotai';
-import { bookingModalAtom } from '../../components/BookingModal/booking.atom.ts';
-import BookingModal from '../../components/BookingModal';
+import { bookingModalAtom } from '../../../components/BookingModal/booking.atom.ts';
+import BookingModal from '../../../components/BookingModal';
 
 const Index = ({children}) => {
 
   const [bookingModal, setBookingModal] = useAtom(bookingModalAtom);
-  console.log(bookingModal);
-  console.log('bookingModal');
 
 
 

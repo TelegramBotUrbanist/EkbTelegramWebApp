@@ -20,22 +20,37 @@
     .statuses {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 2px;
       position: absolute;
       top: 8px;
       left: 4px;
-      //background: $n1; /* Светлый фон */
+      background: #d6d6d7;
+      padding: 8px 8px;
+
+      border-radius: 12px;
+
        /* Темный текст */
 
       .period{
-        background-color: $n1;
+        //background-color: $n1;
         color: $n8;
         border-radius: 12px;
-        padding: 0px 8px;
         font-size: 13px;
         line-height: 18px;
         white-space: nowrap;
+        .sub-period{
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 16px;
+          text-align: left;
+          color: #7a797f;
+        }
+
       }
+      .pre-period{
+        margin-bottom: 4px;
+      }
+
 
       &.occupied {
         background: #FF0000; /* Красный фон для занятых столов */
@@ -78,6 +93,24 @@
       display: flex;
       align-items: center;
       margin-top: 4px;
+
+      .status-indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 8px;
+
+        &.available {
+          background-color: #4CAF50;
+          box-shadow: 0px 0px 4px 4px #34C7593D;
+        }
+
+        &.occupied {
+          background-color: #F44336;
+          box-shadow: 0px 0px 4px 4px #FF00003D;
+        }
+      }
+
 
       .guest-icon {
         width: 16px;
