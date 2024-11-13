@@ -1,5 +1,5 @@
 import { WeekDay } from '../pages/Establishment/components/Details/details.types.ts';
-import {format, getMonth, isBefore, isSameMonth, parseISO} from 'date-fns';
+import { format, getMonth, isBefore, isSameDay, isSameMonth, isTomorrow, parseISO } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
 function getCurrentWeekDay(): WeekDay {
@@ -72,3 +72,21 @@ export const formatPeriod = (startDate, endDate) => {
     return `Завершилось ${format(end, 'd')} ${months[getMonth(end)]}`;
   }
 };
+
+function padToTwoDigits(number) {
+  return number < 10 ? `0${number}` : number;
+}
+export function formatDateWithPrefix(date,startTime,endTime) {
+  let prefix = '';
+  debugger
+  if (isSameDay(date,new Date())) {
+    prefix = 'сегодня, ';
+  } else if (isTomorrow(date)) {
+    prefix = 'завтра, ';
+  }
+  const formattedDate = format(date, 'EEEE, d MMMM', { locale: ru });
+  const start = `${padToTwoDigits(startTime.hours ?? startTime.hour)}:${padToTwoDigits(startTime.minutes ?? startTime.minute)}`;
+  const end = `${padToTwoDigits(endTime.hours ?? endTime.hour)}:${padToTwoDigits(endTime.minutes ?? endTime.minute)}`;
+  const base = `${prefix}${formattedDate}, ${start} - ${end}`
+  return base.charAt(0).toUpperCase() + base.slice(1);
+}

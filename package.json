@@ -28,6 +28,7 @@
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.3.1",
     "react-loading-skeleton": "^3.4.0",
+    "react-modal-sheet": "^3.3.0",
     "react-router-dom": "^6.26.1",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1"

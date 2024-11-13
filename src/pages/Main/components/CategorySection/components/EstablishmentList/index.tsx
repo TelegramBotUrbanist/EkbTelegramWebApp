@@ -9,7 +9,7 @@ interface EstablishmentListProps {
   establishments: FoodEstablishmentInfoDto[];
   direction: 'x' | 'y';
   [x:string]:unknown
-  type:'establishments' | 'events'
+  type:'establishments' | 'events' | 'account'
 }
 
 const EstablishmentList: React.FC<EstablishmentListProps> = ({ establishments,type, direction,...rest }) => {
@@ -24,9 +24,9 @@ const EstablishmentList: React.FC<EstablishmentListProps> = ({ establishments,ty
         // <Link to={`/restaurant/${restaurant.id}`}>
         //   {restaurant.title}
         // </Link>
-        <Link to={type === 'establishments' ? `/establishment/${0}` : `/events/${0}`} className={'card'}>
-          <EstablishmentCard onLikeClick={()=>console.log(`${type} liked, ${establishment?.inFavorites}`)} isDetailed={rest.isDetailed} key={establishment.id} establishment={establishment} />
-        </Link>
+        // <Link to={type === 'account' ? `${establishment.type}/${establishment.id}` : type === 'establishments' ? `/establishment/${0}` : `/events/${0}`} className={'card'}>
+          <EstablishmentCard  type={type} onLikeClick={()=>console.log(`${type} liked, ${establishment?.inFavorites}`)} isDetailed={rest.isDetailed} key={establishment.id} establishment={establishment} />
+        // </Link>
       ))}
     </motion.div>
   );

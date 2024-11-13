@@ -34,7 +34,7 @@ export const categoriesAtom = loadable(atomWithCache<Promise<Category[]>>(async 
   return [allCategory, ...categories];
 }));
 
-export const selectedCategoryAtom = atom<number | null>(null);
+export const selectedCategoryAtom = atom<number | null>(0);
 
 export const selectedSubcategoriesAtom = atom<number[]>([]);
 

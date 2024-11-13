@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import './NavBar.scss';
 
-// Импорт SVG как компоненты
 import HomeIcon_active  from './images/main_active.svg?react';
 import HomeIcon  from './images/main.svg?react';
 import EventsIcon from './images/afisha.svg?react';
 import EventsIcon_active from './images/afisha_active.svg?react';
 import MapIcon from './images/map.svg?react';
 import ProfileIcon  from './images/profile.svg?react';
+import ProfileIcon_active  from './images/profile_active.svg?react';
 
 const NavBar = () => {
   const location = useLocation(); // Получаем текущий путь
@@ -45,7 +45,7 @@ const NavBar = () => {
         <span>Карта</span>
       </Link>
       <Link to="/profile" onClick={() => setActiveTab('profile')}>
-        <ProfileIcon className={activeTab === 'profile' ? 'activeIcon' : ''} />
+        {activeTab === 'profile' ? <ProfileIcon_active/> : <ProfileIcon/>}
         <span>Профиль</span>
       </Link>
     </div>

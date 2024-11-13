@@ -40,6 +40,8 @@ import Selection from "./pages/Selection";
 import AvailableTables from './pages/BookEstablishment/components/AvailableTables';
 import WithBookDetail from './layouts/Establishment/WithBookDetail';
 import EstablishmentWithIdLayout from './layouts/Establishment/EstablishmentWithIdLayout';
+import AccountLayout from './layouts/AccountLayout';
+import AccountPage from './pages/Account';
 
 function App() {
   const lp = useLaunchParams();
@@ -80,6 +82,9 @@ function App() {
             </Route>
             <Route path={'events'} element={<EventsPage />} >
               {/*<Route path={'selection'} element={<Selection/>}></Route>*/}
+            </Route>
+            <Route path={'/profile'} element={<AccountLayout/>} >
+              <Route index element={<AccountPage/>}></Route>
             </Route>
             {/*<Route path={'/events'} element={<MapPage />} />*/}
           </Route>

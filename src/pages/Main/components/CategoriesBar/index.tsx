@@ -14,10 +14,13 @@ interface IProps{
 const CategoriesBar: React.FC<IProps> = ({atom,selectedCategoryAtom,selectedInnerCategoryAtom}) => {
   const categories = useAtomValue(atom)
   const [selectedCategory, setSelectedCategory] = useAtom(selectedCategoryAtom);
+  const selectedCategoryData = useMemo(
+    () => categories?.data?.find(cat => cat.id === selectedCategory),
+    [categories?.data]
+  );
+
   if(categories.state==='loading') return <Loader/>
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const selectedCategoryData = useMemo(()=>categories.data.find(cat => cat.id === selectedCategory),[selectedCategory]);
 
   const handleSelectCategory = (id: number | null) => {
     startTransition(() => {
@@ -34,7 +37,7 @@ const CategoriesBar: React.FC<IProps> = ({atom,selectedCategoryAtom,selectedInne
       dragElastic={0.1}
       whileTap={{ cursor: 'grabbing' }}
     >
-      {categories.data.map((category) => (
+      {categories?.data?.map((category) => (
         <div
           key={category.id}
           className={`navigate-button ${
