@@ -5,11 +5,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); // Затемнение основного компонента
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: left;
   align-items: center;
-  z-index: 100; // Поверх всех компонентов
+  z-index: 9999;
   color: $n8;
   .modal-header{
     font-size: 20px;
@@ -29,8 +29,11 @@
   width: 100%;
   max-width: 400px;
   border-radius: 12px;
-  padding: 20px 16px;
+  //padding: 20px 16px;
   position: relative;
+  >*{
+    padding: 20px 16px;
+  }
 }
 
 

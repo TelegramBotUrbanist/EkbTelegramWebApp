@@ -9,7 +9,7 @@ interface EstablishmentListProps {
   establishments: FoodEstablishmentInfoDto[];
   direction: 'x' | 'y';
   [x:string]:unknown
-  type:'establishments' | 'events' | 'account'
+  type:'establishments' | 'events' | 'account' | 'favorites'
 }
 
 const EstablishmentList: React.FC<EstablishmentListProps> = ({ establishments,type, direction,...rest }) => {
@@ -20,12 +20,12 @@ const EstablishmentList: React.FC<EstablishmentListProps> = ({ establishments,ty
       dragElastic={0.05}
       whileTap={{ cursor: "grabbing" }}
       className="establishment-list detailed">
-      {establishments?.map((establishment) => (
+      {establishments && establishments?.map((establishment) => (
         // <Link to={`/restaurant/${restaurant.id}`}>
         //   {restaurant.title}
         // </Link>
         // <Link to={type === 'account' ? `${establishment.type}/${establishment.id}` : type === 'establishments' ? `/establishment/${0}` : `/events/${0}`} className={'card'}>
-          <EstablishmentCard  type={type} onLikeClick={()=>console.log(`${type} liked, ${establishment?.inFavorites}`)} isDetailed={rest.isDetailed} key={establishment.id} establishment={establishment} />
+          <EstablishmentCard  type={type === 'favorites' ? establishment.entityType === 'FOOD_ESTABLISHMENT' ? 'establishments' : 'events' : 'account' } onLikeClick={()=>console.log(`${type} liked, ${establishment?.inFavorites}`)} isDetailed={rest.isDetailed} key={establishment.id} establishment={establishment} />
         // </Link>
       ))}
     </motion.div>

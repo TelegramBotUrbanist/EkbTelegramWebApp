@@ -15,7 +15,7 @@ const AccountLayout = () => {
   useAtomValue(accountDataAtom);
   const [, setUserProfile] = useAtom(userProfileAtom);
   const launchParams = retrieveLaunchParams();
-
+  debugger
   useEffect(() => {
     // Загружаем данные бронирований через http-запрос
 

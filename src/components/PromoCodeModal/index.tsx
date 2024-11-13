@@ -3,11 +3,9 @@ import Modal from '../../shared/Modal'; // Импортируем универс
 import Button from '../../shared/Button';
 import CustomInput from '../../shared/Input';
 import './PromoCode.scss'
+import { PromoCode } from '../../pages/Account/components/Promocodes/promocodes.types.ts';
 interface IProps {
-  promoCode: {
-    code: string;
-    receivedByUser: boolean;
-  };
+  promoCode: PromoCode
   onClose: () => void;
   onPromoCodeReceived: () => void;
 }
@@ -22,9 +20,9 @@ const PromoCodeModal: React.FC<IProps> = ({ promoCode, onClose, onPromoCodeRecei
   };
 
   return (
-    <Modal align={'end'} onClose={onClose} title="Ваш промокод на скидку 10%">
+    <Modal align={'end'} onClose={onClose} title={`Ваш промокод на скидку ${promoCode.title}`}>
       <p>
-        Распространяется на всё меню ресторана, за исключением барной карты. Действует с 10 мая по 10 июля.
+        {promoCode.description}
       </p>
 
       <CustomInput

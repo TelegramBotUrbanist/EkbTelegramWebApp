@@ -9,7 +9,7 @@ interface CategorySectionProps {
   dataAtom: any;  // Атом для заведений или мероприятий
   categoriesAtom: any; // Атом для категорий
   selectedCategoryAtom: any;  // Атом для выбранной категории
-  type: 'establishments' | 'events' | 'account';
+  type: 'establishments' | 'events' | 'account' | 'favorites';
 }
 
 const CategorySection: React.FC<CategorySectionProps> = ({ dataAtom, categoriesAtom, selectedCategoryAtom, type }) => {
@@ -19,9 +19,9 @@ const CategorySection: React.FC<CategorySectionProps> = ({ dataAtom, categoriesA
 
   const groupedByCategory = useMemo(() => {
     if (!data?.data) return {};
+    debugger
 
-    if (type === 'account') {
-      // Данные уже сгруппированы для аккаунта
+    if (type === 'account' ) {
       return data.data;
     }
 

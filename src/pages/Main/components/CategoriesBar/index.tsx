@@ -8,7 +8,7 @@ import Loader from '../../../../shared/Loader';
 interface IProps{
   atom:Atom<any>,
   selectedCategoryAtom:Atom<any>
-  selectedInnerCategoryAtom:Atom<any>
+  selectedInnerCategoryAtom:Atom<any> | null
 }
 
 const CategoriesBar: React.FC<IProps> = ({atom,selectedCategoryAtom,selectedInnerCategoryAtom}) => {
@@ -50,7 +50,7 @@ const CategoriesBar: React.FC<IProps> = ({atom,selectedCategoryAtom,selectedInne
       ))}
 
     </motion.div>
-      {selectedCategoryData?.innerCategories && (
+      {selectedCategoryData?.innerCategories &&  (
         <SubcategoriesBar selectedInnerCategoryAtom={selectedInnerCategoryAtom}  subcategories={selectedCategoryData.innerCategories} />
       )}
     </>

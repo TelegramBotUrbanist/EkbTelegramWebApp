@@ -2,7 +2,17 @@
 .account-page {
   padding: 1rem;
   color: $n8;
-
+  .profile-buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    >button{
+      padding: 6px 14px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+  }
   .profile-header {
     display: flex;
     align-items: center;

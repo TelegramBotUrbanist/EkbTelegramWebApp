@@ -42,6 +42,8 @@ import WithBookDetail from './layouts/Establishment/WithBookDetail';
 import EstablishmentWithIdLayout from './layouts/Establishment/EstablishmentWithIdLayout';
 import AccountLayout from './layouts/AccountLayout';
 import AccountPage from './pages/Account';
+import Favorites from './pages/Account/components/Favorites';
+import Promocodes from './pages/Account/components/Promocodes';
 
 function App() {
   const lp = useLaunchParams();
@@ -85,6 +87,8 @@ function App() {
             </Route>
             <Route path={'/profile'} element={<AccountLayout/>} >
               <Route index element={<AccountPage/>}></Route>
+              <Route path={'favorites'} element={<Favorites/>}></Route>
+              <Route path={'promocodes'} element={<Promocodes/>}></Route>
             </Route>
             {/*<Route path={'/events'} element={<MapPage />} />*/}
           </Route>

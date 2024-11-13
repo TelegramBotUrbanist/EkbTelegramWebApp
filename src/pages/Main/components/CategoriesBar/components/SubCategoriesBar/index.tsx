@@ -34,14 +34,14 @@ const SubcategoriesBar: React.FC<SubcategoriesBarProps> = ({ subcategories,selec
         dragElastic={0.1}
         whileTap={{ cursor: 'grabbing' }}
       >
-        {subcategories.map((subcategory) => (
+        {subcategories?.map((subcategory) => (
           <div  key={subcategory.id}
                 className={`subcategory-button ${
-                  selectedSubcategories.includes(subcategory.id) ? 'active' : ''
+                  selectedSubcategories?.includes(subcategory?.id) ? 'active' : ''
                 }`}
                 onClick={() => handleSelectSubcategory(subcategory.id)}
           >
-            {subcategory.title}
+            {subcategory?.title}
           </div>
         ))}
       </motion.div>

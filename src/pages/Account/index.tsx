@@ -39,6 +39,16 @@ const AccountPage = () => {
           <span className="username">{userProfile.username}</span>
         </div>
       </div>
+      <div className={'profile-buttons'}>
+        <Button onClick={()=>navigate('/profile/favorites')} type={'secondary'}>
+          <img src={'/profile-heart-icon.svg'}/>
+          <span>Избранное</span>
+        </Button>
+        <Button onClick={()=>navigate('/profile/promocodes')} type={'secondary'}>
+          <img src={'/profile-promo-icon.svg'} />
+          <span>Промокоды</span>
+        </Button>
+      </div>
 
       <div className="reservations-section">
         <h3>Бронь</h3>

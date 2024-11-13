@@ -212,7 +212,7 @@ const ModalSheetContainer = ({establishment,isSheetOpen,setIsSheetOpen,selectedR
             <Sheet.Scroller draggableAt="both">
 
             <div className="reservations-list">
-              {establishment.reservationBidInfoList.map(reservation => (
+              {establishment?.reservationBidInfoList?.map(reservation => (
                 <div key={reservation.id} className="reservation-item">
                   <Checkbox
                     className={'checkbox'}

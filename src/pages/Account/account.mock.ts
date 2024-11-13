@@ -32,40 +32,40 @@ const mockReservations: ReservationObject[] = [
         guestsCount: 1,
         reservationStatus: 'WAITING' as ReservationStatus
       },
-      {
-        id: 2,
-        date: '2024-06-23',
-        startTime: { hour: 17, minute: 0 },
-        endTime: { hour: 19, minute: 0 },
-        tableTitle: 'Стол №3',
-        guestsCount: 1,
-        reservationStatus: 'REJECTED' as ReservationStatus
-      },
-      {
-        id: 3,
-        date: '2024-06-23',
-        startTime: { hour: 17, minute: 0 },
-        endTime: { hour: 19, minute: 0 },
-        tableTitle: 'Стол №3',
-        guestsCount: 1,
-        reservationStatus: 'REJECTED' as ReservationStatus
-      },{
-        id: 4,
-        date: '2024-06-23',
-        startTime: { hour: 17, minute: 0 },
-        endTime: { hour: 19, minute: 0 },
-        tableTitle: 'Стол №3',
-        guestsCount: 1,
-        reservationStatus: 'REJECTED' as ReservationStatus
-      },{
-        id: 5,
-        date: '2024-06-23',
-        startTime: { hour: 17, minute: 0 },
-        endTime: { hour: 19, minute: 0 },
-        tableTitle: 'Стол №3',
-        guestsCount: 1,
-        reservationStatus: 'REJECTED' as ReservationStatus
-      }
+      // {
+      //   id: 2,
+      //   date: '2024-06-23',
+      //   startTime: { hour: 17, minute: 0 },
+      //   endTime: { hour: 19, minute: 0 },
+      //   tableTitle: 'Стол №3',
+      //   guestsCount: 1,
+      //   reservationStatus: 'REJECTED' as ReservationStatus
+      // },
+      // {
+      //   id: 3,
+      //   date: '2024-06-23',
+      //   startTime: { hour: 17, minute: 0 },
+      //   endTime: { hour: 19, minute: 0 },
+      //   tableTitle: 'Стол №3',
+      //   guestsCount: 1,
+      //   reservationStatus: 'REJECTED' as ReservationStatus
+      // },{
+      //   id: 4,
+      //   date: '2024-06-23',
+      //   startTime: { hour: 17, minute: 0 },
+      //   endTime: { hour: 19, minute: 0 },
+      //   tableTitle: 'Стол №3',
+      //   guestsCount: 1,
+      //   reservationStatus: 'REJECTED' as ReservationStatus
+      // },{
+      //   id: 5,
+      //   date: '2024-06-23',
+      //   startTime: { hour: 17, minute: 0 },
+      //   endTime: { hour: 19, minute: 0 },
+      //   tableTitle: 'Стол №3',
+      //   guestsCount: 1,
+      //   reservationStatus: 'REJECTED' as ReservationStatus
+      // }
     ],
     promotionExist: true,
     inFavorites: true

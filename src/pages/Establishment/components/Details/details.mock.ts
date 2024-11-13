@@ -84,7 +84,7 @@ const mockEstablishment: EstablishmentDetails = {
   ],
   description: 'Kitchen — ресторан с авторскими блюдами европейской кухни, специальной комнатой для вяления и террасой на последнем этаже бизнес-центра Clever Park. Отсюда открывается прекрасный вид на город.',
   promoCode: {
-    title:'Ваш промокод на скидку 10%',
+    title:'10%',
     description:'Распространяется на всё меню ресторана, за исключением барной карты. Действует с 10 мая по 10 июля.',
     code:"Купон123",
     receivedByUser:false
@@ -143,6 +143,9 @@ function isToday(day: WeekDay): boolean {
 }
 
 mockHttp.onPost('/getPromoCode').reply(200, {
+  id : 0,
+  title : '10%',
   code: 'F12HK4K2A9',
+  description: 'Распространяется на всё меню ресторана, за исключением барной карты. Действует с 10 мая по 10 июля.',
   receivedByUser: true,
 });
