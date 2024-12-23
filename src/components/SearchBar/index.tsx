@@ -9,7 +9,7 @@ const SearchBar: React.FC = ({ value, onChange, placeholder = 'Поиск' }) =>
   return (
     <div className="search-bar--container">
       <div className="search-bar">
-        <img className={"search-bar--img"} src={'public/search.svg'}/>
+        <img className={"search-bar--img"} src={'/search.svg'}/>
         <input type="text"  value={value}
                onChange={onChange}
                placeholder={placeholder} />
