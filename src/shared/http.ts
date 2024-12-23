@@ -1,10 +1,11 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import { concatUrl } from '../utils/concatUrl';
 
 //TODO - change base url
 
 export const http = axios.create({
-  baseURL: 'https://back.urbanist-ural.ru/telegram',
+  baseURL: concatUrl(window.env.BACKEND_URL, '/telegram'),
 });
 
 const navigateToPath = (path) => {
